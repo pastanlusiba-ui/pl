@@ -1,28 +1,20 @@
 ---
 title: Training
-description: Learning path, technical skills, and capability development
+description: Workshops, courses, and teaching
 ---
 
-## Ongoing Professional Development
+## Workshops
 
-I maintain a continuous learning approach across engineering, automation, and web delivery.
+- AI-assisted workflow design
+- Content automation operations
+- Practical delivery systems for small teams
 
-## Core Technical Areas
+## Courses
 
-- Swift and Swift Package Manager
-- Static site architecture and publishing pipelines
-- HTML/CSS for content-focused interfaces
-- Git and GitHub workflows
-- Automation tooling and operational scripting
+- Applied web publishing workflows
+- Technical operations for non-engineering teams
+- Structured documentation and implementation planning
 
-## Applied Learning Approach
+## Teaching and Facilitation
 
-- Build-first: validate skills through working software.
-- Iterate quickly: refine based on actual use and constraints.
-- Document decisions: keep systems clear and transferable.
-
-## Current Learning Priorities
-
-- Improving CI/CD pipelines for personal and professional projects.
-- Strengthening production reliability in automation workflows.
-- Expanding best practices for structured technical writing.
+I support teams through practical, implementation-focused training sessions with actionable outputs.

@@ -27,8 +27,11 @@ DEFAULT_DATA = {
     "navItems": [
         {"title": "Home", "path": "/"},
         {"title": "Work", "path": "work"},
+        {"title": "Training", "path": "training"},
         {"title": "Publications", "path": "publications"},
-        {"title": "Connect", "path": "connect"},
+        {"title": "Presentations", "path": "presentations"},
+        {"title": "Blog", "path": "blog"},
+        {"title": "Connect with me", "path": "connect"},
     ],
 }
 

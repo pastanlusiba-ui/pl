@@ -1,21 +1,18 @@
 ---
-title: Connect
-description: Contact details and collaboration channels
+title: Connect with me
+description: Contact information and social links
 ---
 
 ## Contact
 
 - **Email:** pastanlusiba@gmail.com
-- **GitHub:** https://github.com/pastanlusiba
+- **Location:** Uganda
 
-## Collaboration Focus
+## Social Links
 
-I am open to collaborations involving:
+- **GitHub:** https://github.com/pastanlusiba-ui
+- **LinkedIn:** https://www.linkedin.com/in/pastan-lusiba-0515b764/
 
-- automation workflow design
-- web publishing systems
-- practical AI-assisted operations
+## Collaboration
 
-## Outreach Note
-
-If you are reaching out for collaboration, include your objective, timeline, and expected scope so I can respond quickly.
+I am open to collaboration in automation, AI-enabled operations, and web delivery systems.

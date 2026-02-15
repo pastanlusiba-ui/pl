@@ -17,12 +17,12 @@
       "path": "/"
     },
     {
-      "title": "Research",
-      "path": "research"
-    },
-    {
       "title": "Work",
       "path": "work"
+    },
+    {
+      "title": "Training",
+      "path": "training"
     },
     {
       "title": "Publications",
@@ -33,11 +33,11 @@
       "path": "presentations"
     },
     {
-      "title": "CV",
-      "path": "cv"
+      "title": "Blog",
+      "path": "blog"
     },
     {
-      "title": "Connect",
+      "title": "Connect with me",
       "path": "connect"
     }
   ]

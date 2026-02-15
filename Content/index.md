@@ -1,25 +1,25 @@
 ---
 title: Home
-description: Personal profile and portfolio
+description: Main landing page
 ---
 
-## Focus Areas
+## About Me
 
-- AI-assisted operations and automation
-- Content and publishing workflows
-- Web systems that prioritize reliability and maintainability
+I am **Pastan Lusiba**, a builder focused on practical AI workflows, automation systems, and web delivery.
 
-## What You Will Find Here
+I work on turning ideas into clear, maintainable systems that teams can actually use in real-world operations.
 
-- **Research:** direction, themes, and active areas of inquiry
-- **Work:** implemented systems and project execution
-- **Publications:** formal and informal written output
-- **Presentations:** talks, demos, and workshops
-- **CV:** background, roles, and capability timeline
+## What I Do
 
-## Collaboration
+- Design and implement automation workflows
+- Build and maintain content-first websites
+- Support AI-assisted operations and execution systems
 
-I collaborate on practical implementation projects that move from concept to operational delivery.
+## Explore
 
-- [Start with Work](work)
-- [See how to connect](connect)
+- [Work](work)
+- [Training](training)
+- [Publications](publications)
+- [Presentations](presentations)
+- [Blog](blog)
+- [Connect with me](connect)

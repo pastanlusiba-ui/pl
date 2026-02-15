@@ -1,22 +1,19 @@
 ---
 title: Presentations
-description: Talks, walkthroughs, and knowledge-sharing sessions
+description: Conference talks and slides
 ---
 
-## Overview
+## Conference Talks
 
-This section captures speaking engagements, technical walkthroughs, and demonstration sessions.
+- *Talk title* — Conference name, location, year
+- *Talk title* — Conference name, location, year
 
-## Current Status
+## Slide Decks
 
-No formal conference presentations are listed yet.
+- *Presentation title* — [Slide link]
+- *Presentation title* — [Slide link]
 
-## Planned Session Topics
+## Invited Sessions
 
-- Practical automation for solo builders and small teams
-- Building and shipping static sites with reliable workflows
-- Designing maintainable AI-assisted content operations
-
-## Availability
-
-I am open to lightweight speaking or demo sessions focused on implementation and execution.
+- *Session title* — Host institution, year
+- *Session title* — Host institution, year

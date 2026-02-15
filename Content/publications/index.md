@@ -1,22 +1,23 @@
 ---
 title: Publications
-description: Writing, technical notes, and published outputs
+description: Papers, articles, and briefs
 ---
 
-## Overview
+## Papers
 
-I use this section to track written output, including technical notes, implementation write-ups, and public documentation.
+1. *Paper title* — Journal/Conference, Year
+2. *Paper title* — Journal/Conference, Year
 
-## Current Status
+## Articles
 
-Formal publications are in progress. New entries will be added here as they are published.
+1. *Article title* — Publication platform, Year
+2. *Article title* — Publication platform, Year
 
-## Planned Output Types
+## Briefs
 
-1. Technical implementation notes
-2. Workflow case studies
-3. Practical guides for automation and deployment
+1. *Policy/technical brief title* — Organization, Year
+2. *Policy/technical brief title* — Organization, Year
 
-## Publication Updates
+## Notes
 
-This page will be updated continuously as new written work is released.
+This page is maintained as a living list and will be updated as new outputs are published.

@@ -36,8 +36,11 @@ struct SiteData: Codable {
         navItems: [
             SiteNavItem(title: "Home", path: "/"),
             SiteNavItem(title: "Work", path: "work"),
+            SiteNavItem(title: "Training", path: "training"),
             SiteNavItem(title: "Publications", path: "publications"),
-            SiteNavItem(title: "Connect", path: "connect")
+            SiteNavItem(title: "Presentations", path: "presentations"),
+            SiteNavItem(title: "Blog", path: "blog"),
+            SiteNavItem(title: "Connect with me", path: "connect")
         ]
     )
 }
