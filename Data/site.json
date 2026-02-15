@@ -1,0 +1,44 @@
+{
+  "siteName": "Pastan Lusiba Jr",
+  "tagline": "Builder focused on practical AI, automation, and web systems.",
+  "baseURL": "https://pastanlusiba-ui.github.io/pl",
+  "logoText": "PL",
+  "logoPath": "logo-mark.svg",
+  "profileImagePath": "profile-placeholder.svg",
+  "heroHeadline": "Practical AI and Automation for Real-World Workflows",
+  "heroIntro": "I design and ship systems that turn ideas into maintainable products: websites, automated workflows, and operational tooling.",
+  "email": "pastanlusiba@gmail.com",
+  "github": "https://github.com/pastanlusiba-ui",
+  "linkedin": "https://www.linkedin.com/in/pastan-lusiba",
+  "location": "Uganda",
+  "navItems": [
+    {
+      "title": "Home",
+      "path": "/"
+    },
+    {
+      "title": "Research",
+      "path": "research"
+    },
+    {
+      "title": "Work",
+      "path": "work"
+    },
+    {
+      "title": "Publications",
+      "path": "publications"
+    },
+    {
+      "title": "Presentations",
+      "path": "presentations"
+    },
+    {
+      "title": "CV",
+      "path": "cv"
+    },
+    {
+      "title": "Connect",
+      "path": "connect"
+    }
+  ]
+}

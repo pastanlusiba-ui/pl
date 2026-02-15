@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">PL logo</title>
+  <desc id="desc">Monogram logo for Pastan Lusiba</desc>
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0b7285"/>
+      <stop offset="100%" stop-color="#023047"/>
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" rx="28" fill="url(#g)"/>
+  <path d="M42 38h34c15 0 28 12 28 28s-13 28-28 28H62v28H42V38zm20 18v20h14c5 0 9-4 9-10s-4-10-9-10H62z" fill="#fff"/>
+  <path d="M111 122H74v-18h37z" fill="#90e0ef"/>
+</svg>

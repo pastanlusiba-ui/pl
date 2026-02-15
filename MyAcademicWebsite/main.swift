@@ -2,6 +2,8 @@ import Foundation
 import Publish
 import Plot
 
+let siteData = SiteDataLoader.load()
+
 struct AcademicWebsite: Website {
     enum SectionID: String, WebsiteSectionID {
         case work
@@ -13,12 +15,21 @@ struct AcademicWebsite: Website {
 
     struct ItemMetadata: WebsiteItemMetadata {}
 
-    // Update this if your final GitHub repo name changes.
-    var url = URL(string: "https://pastanlusiba-ui.github.io/pl")!
-    var name = "Pastan Lusiba"
-    var description = "Builder focused on practical AI, automation, and web systems."
+    private let data: SiteData
+
+    init(data: SiteData) {
+        self.data = data
+    }
+
+    var url: URL {
+        URL(string: data.baseURL) ?? URL(string: "https://pastanlusiba-ui.github.io/pl")!
+    }
+
+    var name: String { data.siteName }
+    var description: String { data.tagline }
     var language: Language { .english }
-    var imagePath: Path? { "profile-placeholder.svg" }
+    var imagePath: Path? { Path(data.profileImagePath) }
 }
 
-try AcademicWebsite().publish(withTheme: .academicMinimalist)
+let website = AcademicWebsite(data: siteData)
+try website.publish(withTheme: .academicMinimalist(siteData: siteData))

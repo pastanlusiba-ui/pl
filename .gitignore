@@ -11,3 +11,6 @@ Output/
 # Xcode user data
 *.xcuserstate
 MyAcademicWebsite.xcodeproj/xcuserdata/
+
+# Python cache
+__pycache__/

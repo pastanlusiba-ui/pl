@@ -3,82 +3,168 @@ import Publish
 import Foundation
 
 extension Theme where Site == AcademicWebsite {
-    static var academicMinimalist: Self {
-        Theme(htmlFactory: AcademicHTMLFactory())
+    static func academicMinimalist(siteData: SiteData) -> Self {
+        Theme(htmlFactory: AcademicHTMLFactory(siteData: siteData))
     }
 }
 
 private struct AcademicHTMLFactory: HTMLFactory {
-    private func withBasePath(_ path: String, for context: PublishingContext<AcademicWebsite>) -> String {
-        let basePath = context.site.url.path == "/" ? "" : context.site.url.path
-        let normalized = path.hasPrefix("/") ? path : "/\(path)"
-        return "\(basePath)\(normalized)"
+    let siteData: SiteData
+
+    func makeIndexHTML(for index: Index, context: PublishingContext<AcademicWebsite>) -> HTML {
+        makePage(
+            title: index.title,
+            pageBody: .contentBody(index.content.body),
+            includeHero: true,
+            context: context
+        )
     }
 
-    func makeLayout<T: Location>(for location: T, context: PublishingContext<AcademicWebsite>) -> HTML {
+    func makeSectionHTML(for section: Section<AcademicWebsite>, context: PublishingContext<AcademicWebsite>) -> HTML {
+        makePage(
+            title: section.title,
+            pageBody: .contentBody(section.content.body),
+            includeHero: false,
+            context: context
+        )
+    }
+
+    func makeItemHTML(for item: Item<AcademicWebsite>, context: PublishingContext<AcademicWebsite>) -> HTML {
+        makePage(
+            title: item.title,
+            pageBody: .contentBody(item.content.body),
+            includeHero: false,
+            context: context
+        )
+    }
+
+    func makePageHTML(for page: Page, context: PublishingContext<AcademicWebsite>) -> HTML {
+        makePage(
+            title: page.title,
+            pageBody: .contentBody(page.content.body),
+            includeHero: false,
+            context: context
+        )
+    }
+
+    func makeTagListHTML(for page: TagListPage, context: PublishingContext<AcademicWebsite>) -> HTML? { nil }
+
+    func makeTagDetailsHTML(for page: TagDetailsPage, context: PublishingContext<AcademicWebsite>) -> HTML? { nil }
+
+    private func makePage(
+        title: String,
+        pageBody: Node<HTML.BodyContext>,
+        includeHero: Bool,
+        context: PublishingContext<AcademicWebsite>
+    ) -> HTML {
         HTML(
             .head(
-                .title(location.title),
+                .title(title),
                 .meta(.charset(.utf8)),
                 .meta(.name("viewport"), .content("width=device-width, initial-scale=1")),
-                .stylesheet(withBasePath("theme.css", for: context)),
+                .meta(.name("description"), .content(siteData.tagline)),
+                .stylesheet(resolvePath("theme.css", context: context)),
                 .link(
                     .rel(.stylesheet),
-                    .href("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:ital,wght@0,300;0,700;1,300&display=swap")
+                    .href("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap")
                 )
             ),
             .body(
-                .div(
-                    .class("wrapper"),
-                    .header(
-                        .class("sidebar"),
-                        .div(
-                            .class("profile-container"),
+                .header(
+                    .class("site-header"),
+                    .div(
+                        .class("site-header-inner"),
+                        .a(
+                            .class("brand"),
+                            .href(resolvePath("/", context: context)),
                             .img(
-                                .src(withBasePath(context.site.imagePath?.description ?? "profile-placeholder.svg", for: context)),
-                                .class("profile-photo"),
-                                .alt("Profile photo")
-                            )
+                                .class("brand-mark"),
+                                .src(resolvePath(siteData.logoPath, context: context)),
+                                .alt("Logo")
+                            ),
+                            .span(.class("brand-text"), .text(siteData.logoText))
                         ),
-                        .h1(.text(context.site.name)),
-                        .p(.class("bio-text"), .text(context.site.description)),
                         .nav(
+                            .class("top-nav"),
                             .ul(
-                                .li(.a(.href(withBasePath("/", for: context)), "Home")),
-                                .li(.a(.href(withBasePath("work", for: context)), "Work")),
-                                .li(.a(.href(withBasePath("training", for: context)), "Training")),
-                                .li(.a(.href(withBasePath("publications", for: context)), "Publications")),
-                                .li(.a(.href(withBasePath("presentations", for: context)), "Presentations")),
-                                .li(.a(.href(withBasePath("connect", for: context)), "Connect"))
+                                .forEach(siteData.navItems) { navItem in
+                                    .li(
+                                        .a(
+                                            .href(resolvePath(navItem.path, context: context)),
+                                            .text(navItem.title)
+                                        )
+                                    )
+                                }
                             )
                         )
-                    ),
-                    .main(
-                        .class("content"),
-                        .contentBody(location.content.body)
+                    )
+                ),
+                .main(
+                    .class("page-shell"),
+                    includeHero ? heroSection(context: context) : .empty,
+                    .article(
+                        .class("article"),
+                        pageBody
+                    )
+                ),
+                .footer(
+                    .class("site-footer"),
+                    .p(.text("\(siteData.siteName) • \(siteData.location)")),
+                    .p(
+                        .a(.href("mailto:\(siteData.email)"), .text(siteData.email)),
+                        .text(" • "),
+                        .a(.href(siteData.github), .text("GitHub")),
+                        siteData.linkedin.isEmpty ? .empty : .text(" • "),
+                        siteData.linkedin.isEmpty ? .empty : .a(.href(siteData.linkedin), .text("LinkedIn"))
                     )
                 )
             )
         )
     }
 
-    func makeIndexHTML(for index: Index, context: PublishingContext<AcademicWebsite>) -> HTML {
-        makeLayout(for: index, context: context)
+    private func heroSection(context: PublishingContext<AcademicWebsite>) -> Node<HTML.BodyContext> {
+        .section(
+            .class("hero"),
+            .div(
+                .class("hero-copy"),
+                .p(.class("hero-kicker"), .text("Personal Website")),
+                .h1(.text(siteData.heroHeadline)),
+                .p(.class("hero-intro"), .text(siteData.heroIntro)),
+                .div(
+                    .class("hero-actions"),
+                    .a(.class("btn btn-primary"), .href(resolvePath("work", context: context)), .text("View Work")),
+                    .a(.class("btn"), .href(resolvePath("connect", context: context)), .text("Get In Touch"))
+                )
+            ),
+            .div(
+                .class("hero-photo-card"),
+                .img(
+                    .class("hero-photo"),
+                    .src(resolvePath(siteData.profileImagePath, context: context)),
+                    .alt("Profile picture")
+                )
+            )
+        )
     }
 
-    func makeSectionHTML(for section: Section<AcademicWebsite>, context: PublishingContext<AcademicWebsite>) -> HTML {
-        makeLayout(for: section, context: context)
+    private func resolvePath(_ rawPath: String, context: PublishingContext<AcademicWebsite>) -> String {
+        let trimmed = rawPath.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        if trimmed.hasPrefix("http://") || trimmed.hasPrefix("https://") || trimmed.hasPrefix("mailto:") {
+            return trimmed
+        }
+
+        let basePath = context.site.url.path == "/" ? "" : context.site.url
+            .path
+            .trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+
+        let basePrefix = basePath.isEmpty ? "" : "/\(basePath)"
+
+        if trimmed == "/" {
+            return basePrefix.isEmpty ? "/" : "\(basePrefix)/"
+        }
+
+        let normalized = trimmed.hasPrefix("/") ? trimmed : "/\(trimmed)"
+        return "\(basePrefix)\(normalized)"
     }
-
-    func makeItemHTML(for item: Item<AcademicWebsite>, context: PublishingContext<AcademicWebsite>) -> HTML {
-        makeLayout(for: item, context: context)
-    }
-
-    func makePageHTML(for page: Page, context: PublishingContext<AcademicWebsite>) -> HTML {
-        makeLayout(for: page, context: context)
-    }
-
-    func makeTagListHTML(for page: TagListPage, context: PublishingContext<AcademicWebsite>) -> HTML? { nil }
-
-    func makeTagDetailsHTML(for page: TagDetailsPage, context: PublishingContext<AcademicWebsite>) -> HTML? { nil }
 }
