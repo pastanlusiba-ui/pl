@@ -109,11 +109,11 @@ private struct AcademicHTMLFactory: HTMLFactory {
                 .main(
                     .class("page-shell"),
                     includeHero ? heroSection(context: context) : .empty,
-                    includeHighlights ? highlightsSection(context: context) : .empty,
                     .article(
                         .class("article"),
                         pageBody
-                    )
+                    ),
+                    includeHighlights ? highlightsSection(context: context) : .empty
                 ),
                 .footer(
                     .class("site-footer"),
