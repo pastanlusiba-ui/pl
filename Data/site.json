@@ -4,12 +4,12 @@
   "baseURL": "https://pastanlusiba-ui.github.io/pl",
   "logoText": "",
   "logoPath": "pastan-logo.png",
-  "profileImagePath": "profile-placeholder.svg",
+  "profileImagePath": "profile.jpg",
   "heroHeadline": "Practical AI and Automation for Real-World Workflows",
   "heroIntro": "I design and ship systems that turn ideas into maintainable products: websites, automated workflows, and operational tooling.",
   "email": "pastanlusiba@gmail.com",
   "github": "https://github.com/pastanlusiba-ui",
-  "linkedin": "https://www.linkedin.com/in/pastan-lusiba",
+  "linkedin": "https://www.linkedin.com/in/pastan-lusiba-0515b764/",
   "location": "Uganda",
   "navItems": [
     {
