@@ -40,6 +40,7 @@ DEFAULT_DATA = {
             "title": "Designing practical automation systems for implementation teams",
             "summary": "Draft manuscript focused on lightweight automation models for real operational settings.",
             "path": "publications",
+            "imagePath": "highlight-publication-journal.svg",
         },
         {
             "category": "Blog",
@@ -47,6 +48,7 @@ DEFAULT_DATA = {
             "title": "What I learned building an auto-updating personal website",
             "summary": "A walkthrough of content architecture, deployment, and practical maintenance decisions.",
             "path": "blog",
+            "imagePath": "highlight-blog.svg",
         },
         {
             "category": "Training",
@@ -54,6 +56,7 @@ DEFAULT_DATA = {
             "title": "Applied workflow automation for small implementation teams",
             "summary": "Hands-on workshop design for building repeatable systems with immediate operational value.",
             "path": "training",
+            "imagePath": "highlight-training.svg",
         },
     ],
 }
@@ -117,8 +120,9 @@ def highlight_items_to_text(highlights):
         title = str(item.get("title", "")).strip()
         summary = str(item.get("summary", "")).strip()
         path = str(item.get("path", "")).strip()
+        image_path = str(item.get("imagePath", "")).strip()
         if category and tag and title and summary and path:
-            lines.append(f"{category}|{tag}|{title}|{summary}|{path}")
+            lines.append(f"{category}|{tag}|{title}|{summary}|{path}|{image_path}")
     return "\n".join(lines)
 
 
@@ -129,10 +133,11 @@ def text_to_highlight_items(text):
         if not line:
             continue
         parts = [part.strip() for part in line.split("|")]
-        if len(parts) != 5:
+        if len(parts) not in [5, 6]:
             continue
 
-        category, tag, title, summary, path = parts
+        category, tag, title, summary, path = parts[:5]
+        image_path = parts[5] if len(parts) == 6 else ""
         if category and tag and title and summary and path:
             items.append(
                 {
@@ -141,6 +146,7 @@ def text_to_highlight_items(text):
                     "title": title,
                     "summary": summary,
                     "path": path,
+                    "imagePath": image_path,
                 }
             )
 
@@ -266,7 +272,7 @@ def render_form(data, message="", build_output=""):
     <div>
       <label>Highlights slider items</label>
       <textarea name=\"highlightsText\">{html.escape(highlights_text)}</textarea>
-      <div class=\"help\">One per line using <code>Category|Tag|Title|Summary|path</code>. Example: <code>Publications|Journal Article|Title|Short summary|publications</code>.</div>
+      <div class=\"help\">One per line using <code>Category|Tag|Title|Summary|path|imagePath</code>. Example: <code>Publications|Journal Article|Title|Short summary|publications|highlight-publication-journal.svg</code>.</div>
     </div>
 
     <button type=\"submit\">Save and rebuild website</button>

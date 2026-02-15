@@ -11,6 +11,7 @@ struct SiteHighlightItem: Codable {
     var title: String
     var summary: String
     var path: String
+    var imagePath: String?
 }
 
 struct SiteData: Codable {
@@ -57,42 +58,48 @@ struct SiteData: Codable {
                 tag: "Journal Article",
                 title: "Designing practical automation systems for implementation teams",
                 summary: "Draft manuscript focused on lightweight automation models for real operational settings.",
-                path: "publications"
+                path: "publications",
+                imagePath: "highlight-publication-journal.svg"
             ),
             SiteHighlightItem(
                 category: "Publications",
                 tag: "Policy Brief",
                 title: "Adoption patterns for AI-assisted workflow systems",
                 summary: "Brief in progress on how teams can introduce AI support while preserving process quality.",
-                path: "publications"
+                path: "publications",
+                imagePath: "highlight-publication-brief.svg"
             ),
             SiteHighlightItem(
                 category: "Blog",
                 tag: "Insight Post",
                 title: "What I learned building an auto-updating personal website",
                 summary: "A walkthrough of content architecture, deployment, and practical maintenance decisions.",
-                path: "blog"
+                path: "blog",
+                imagePath: "highlight-blog.svg"
             ),
             SiteHighlightItem(
                 category: "Training",
                 tag: "Workshop",
                 title: "Applied workflow automation for small implementation teams",
                 summary: "Hands-on workshop design for building repeatable systems with immediate operational value.",
-                path: "training"
+                path: "training",
+                imagePath: "highlight-training.svg"
             ),
             SiteHighlightItem(
                 category: "Work",
                 tag: "Project Milestone",
                 title: "Launched local editor workflow for dynamic website field updates",
                 summary: "Built a local form-based editor that updates structured data and rebuilds on save.",
-                path: "work"
+                path: "work",
+                imagePath: "highlight-work.svg"
             ),
             SiteHighlightItem(
                 category: "Presentations",
                 tag: "Conference Talk",
                 title: "Practical models for AI-enabled content operations",
                 summary: "Upcoming presentation on implementation choices, risks, and scalable operating patterns.",
-                path: "presentations"
+                path: "presentations",
+                imagePath: "highlight-presentation.svg"
             )
         ]
     )

@@ -169,27 +169,37 @@ private struct AcademicHTMLFactory: HTMLFactory {
             ),
             .div(
                 .class("highlights-slider"),
-                .forEach(Array(siteData.highlights.enumerated())) { entry in
-                    let index = entry.offset
-                    let item = entry.element
-
-                    return .article(
-                        .class(index == 0 ? "highlight-card is-active" : "highlight-card"),
-                        .attribute(named: "data-highlight-index", value: String(index)),
-                        .p(
-                            .class("highlight-meta"),
-                            .span(.class("highlight-category"), .text(item.category)),
-                            .span(.class("highlight-tag"), .text(item.tag))
-                        ),
-                        .h3(.text(item.title)),
-                        .p(.class("highlight-summary"), .text(item.summary)),
-                        .a(
-                            .class("highlight-link"),
-                            .href(resolvePath(item.path, context: context)),
-                            .text("Open \(item.category)")
+                .div(
+                    .class("highlights-track"),
+                    .forEach(siteData.highlights) { item in
+                        .article(
+                            .class("highlight-card"),
+                            .div(
+                                .class("highlight-media"),
+                                .img(
+                                    .class("highlight-image"),
+                                    .src(resolvePath(highlightImagePath(for: item), context: context)),
+                                    .alt("\(item.category) highlight image")
+                                )
+                            ),
+                            .div(
+                                .class("highlight-content"),
+                                .p(
+                                    .class("highlight-meta"),
+                                    .span(.class("highlight-category"), .text(item.category)),
+                                    .span(.class("highlight-tag"), .text(item.tag))
+                                ),
+                                .h3(.text(item.title)),
+                                .p(.class("highlight-summary"), .text(item.summary)),
+                                .a(
+                                    .class("highlight-link"),
+                                    .href(resolvePath(item.path, context: context)),
+                                    .text("Open \(item.category)")
+                                )
+                            )
                         )
-                    )
-                }
+                    }
+                )
             ),
             .div(
                 .class("highlight-dots"),
@@ -212,6 +222,9 @@ private struct AcademicHTMLFactory: HTMLFactory {
           const root = document.querySelector('[data-highlights-slider=\"true\"]');
           if (!root) return;
 
+          const track = root.querySelector('.highlights-track');
+          if (!track) return;
+
           const cards = Array.from(root.querySelectorAll('.highlight-card'));
           const dots = Array.from(root.querySelectorAll('.highlight-dot'));
           if (cards.length === 0) return;
@@ -219,12 +232,13 @@ private struct AcademicHTMLFactory: HTMLFactory {
           let index = 0;
           let timer = null;
 
-          const activate = (next) => {
+          const activate = (next, animated = true) => {
             index = (next + cards.length) % cards.length;
 
-            cards.forEach((card, i) => {
-              card.classList.toggle('is-active', i === index);
-            });
+            track.style.transition = animated
+              ? 'transform 620ms cubic-bezier(0.22, 0.61, 0.36, 1)'
+              : 'none';
+            track.style.transform = `translateX(-${index * 100}%)`;
 
             dots.forEach((dot, i) => {
               dot.classList.toggle('is-active', i === index);
@@ -253,7 +267,7 @@ private struct AcademicHTMLFactory: HTMLFactory {
           root.addEventListener('mouseenter', stop);
           root.addEventListener('mouseleave', start);
 
-          activate(0);
+          activate(0, false);
           start();
         })();
         """
@@ -261,6 +275,11 @@ private struct AcademicHTMLFactory: HTMLFactory {
 
     private func highlightsSliderScriptNode() -> Node<HTML.BodyContext> {
         .script(.raw(highlightsSliderScript()))
+    }
+
+    private func highlightImagePath(for item: SiteHighlightItem) -> String {
+        let candidate = item.imagePath?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        return candidate.isEmpty ? siteData.profileImagePath : candidate
     }
 
     private func resolvePath(_ rawPath: String, context: PublishingContext<AcademicWebsite>) -> String {

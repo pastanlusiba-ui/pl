@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Blog Highlight</title>
+  <desc id="desc">Decorative card image for a blog insight highlight.</desc>
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#27514b" />
+      <stop offset="100%" stop-color="#3d7a71" />
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#g1)" />
+  <path d="M38 250c66-46 120-50 202-16s146 28 232-26v152H38z" fill="#d7efe9" fill-opacity="0.18" />
+  <rect x="90" y="62" width="188" height="154" rx="14" fill="#e8f8f5" fill-opacity="0.94" />
+  <circle cx="126" cy="96" r="10" fill="#2c5f58" fill-opacity="0.65" />
+  <rect x="148" y="89" width="104" height="14" rx="7" fill="#2c5f58" fill-opacity="0.55" />
+  <rect x="112" y="122" width="144" height="10" rx="5" fill="#2c5f58" fill-opacity="0.45" />
+  <rect x="112" y="142" width="126" height="10" rx="5" fill="#2c5f58" fill-opacity="0.45" />
+  <text x="60" y="278" fill="#f0fbf8" font-family="Manrope, Arial, sans-serif" font-size="30" font-weight="700">Blog Insight</text>
+  <text x="60" y="314" fill="#caeae3" font-family="Manrope, Arial, sans-serif" font-size="17">Blog</text>
+</svg>
