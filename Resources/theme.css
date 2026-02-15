@@ -1,20 +1,21 @@
 :root {
-    --bg: #edf2f8;
-    --surface: #f7f9fc;
+    --bg: #f2efe9;
+    --surface: #fbf8f3;
     --surface-strong: #ffffff;
-    --ink: #16202f;
-    --muted: #536074;
-    --line: #d4deea;
-    --accent: #123a66;
-    --accent-soft: #e8f0fa;
-    --header-bg: #e6edf6;
+    --ink: #142238;
+    --muted: #505b6c;
+    --line: #d6d0c3;
+    --accent: #173a63;
+    --accent-soft: #e7e1d5;
+    --header-bg: #ece6dd;
+    --accent-gold: #8a6a3f;
 }
 
 * { box-sizing: border-box; }
 
 body {
     margin: 0;
-    background: radial-gradient(circle at top right, #f7fafc 0%, var(--bg) 53%, #e3ebf5 100%);
+    background: radial-gradient(circle at top right, #fcfaf6 0%, var(--bg) 56%, #e7e1d6 100%);
     color: var(--ink);
     font-family: 'Manrope', sans-serif;
     line-height: 1.7;
@@ -27,7 +28,7 @@ a:hover { text-decoration: underline; }
     position: sticky;
     top: 0;
     z-index: 20;
-    background: linear-gradient(180deg, #edf3fa 0%, var(--header-bg) 100%);
+    background: linear-gradient(180deg, #f3ede4 0%, var(--header-bg) 100%);
     backdrop-filter: none;
     border-bottom: 1px solid var(--line);
 }
@@ -81,13 +82,13 @@ a:hover { text-decoration: underline; }
     display: inline-block;
     padding: 0.5rem 0.75rem;
     border-radius: 999px;
-    color: #233751;
+    color: #1d3350;
     font-size: 0.9rem;
     font-weight: 600;
 }
 
 .top-nav a:hover {
-    background: var(--accent-soft);
+    background: #dfe6f0;
     color: var(--accent);
     text-decoration: none;
 }
@@ -102,10 +103,10 @@ a:hover { text-decoration: underline; }
     grid-template-columns: 1.5fr 0.5fr;
     gap: 0.95rem;
     padding: 0.82rem 1rem;
-    background: linear-gradient(160deg, var(--surface) 0%, var(--surface-strong) 100%);
+    background: linear-gradient(160deg, #fffefb 0%, var(--surface) 58%, #f5efe5 100%);
     border: 1px solid var(--line);
     border-radius: 16px;
-    box-shadow: 0 8px 18px rgba(18, 58, 102, 0.08);
+    box-shadow: 0 8px 18px rgba(26, 44, 71, 0.1);
 }
 
 .hero-name {
@@ -113,7 +114,7 @@ a:hover { text-decoration: underline; }
     font-family: 'Literata', serif;
     font-weight: 700;
     letter-spacing: 0.03em;
-    color: #163354;
+    color: var(--accent-gold);
     font-size: clamp(0.95rem, 1.45vw, 1.2rem);
 }
 
@@ -126,7 +127,7 @@ a:hover { text-decoration: underline; }
 
 .hero-intro {
     margin-top: 0.38rem;
-    color: #3d4f69;
+    color: #49576d;
     font-size: 0.89rem;
     line-height: 1.45;
     max-width: 56ch;
@@ -147,13 +148,13 @@ a:hover { text-decoration: underline; }
     border-radius: 999px;
     border: 1px solid var(--line);
     padding: 0 0.82rem;
-    color: #20364f;
+    color: #1e3350;
     font-size: 0.85rem;
     font-weight: 700;
-    background: #fbfcff;
+    background: #fdfcf9;
 }
 
-.btn:hover { text-decoration: none; background: #eef3fa; }
+.btn:hover { text-decoration: none; background: #f1ece4; }
 
 .btn-primary {
     background: var(--accent);
@@ -189,17 +190,17 @@ a:hover { text-decoration: underline; }
 
 .highlights-banner {
     margin-top: 1rem;
-    background: linear-gradient(160deg, #f4f8fd 0%, #ffffff 100%);
+    background: linear-gradient(160deg, #fffdf8 0%, #f6f2ea 100%);
     border: 1px solid var(--line);
     border-radius: 18px;
-    box-shadow: 0 10px 22px rgba(18, 58, 102, 0.08);
+    box-shadow: 0 10px 22px rgba(24, 36, 56, 0.09);
     padding: 1rem 1.1rem 0.9rem;
 }
 
 .highlights-header h2 {
     margin: 0;
     font-family: 'Literata', serif;
-    color: #18385f;
+    color: #143154;
     font-size: clamp(1.05rem, 1.8vw, 1.45rem);
 }
 
@@ -213,7 +214,7 @@ a:hover { text-decoration: underline; }
     overflow: hidden;
     border-radius: 14px;
     border: 1px solid var(--line);
-    background: #fcfdff;
+    background: #fffdfa;
 }
 
 .highlights-track {
@@ -235,7 +236,7 @@ a:hover { text-decoration: underline; }
     height: 138px;
     border-radius: 12px;
     overflow: hidden;
-    background: #e6eef9;
+    background: #ebe4d8;
 }
 
 .highlight-image {
@@ -262,7 +263,7 @@ a:hover { text-decoration: underline; }
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #36547a;
+    color: #2b4b73;
 }
 
 .highlight-tag {
@@ -270,21 +271,21 @@ a:hover { text-decoration: underline; }
     font-weight: 700;
     padding: 0.22rem 0.48rem;
     border-radius: 999px;
-    background: #e8f0fa;
-    color: #22466f;
+    background: #efe5d3;
+    color: #6e532f;
 }
 
 .highlight-card h3 {
     margin: 0.55rem 0 0.45rem;
     font-family: 'Literata', serif;
-    color: #173b63;
+    color: #16355b;
     font-size: 1.05rem;
     line-height: 1.35;
 }
 
 .highlight-summary {
     margin: 0.1rem 0 0;
-    color: #435a78;
+    color: #50607a;
     font-size: 0.95rem;
     line-height: 1.52;
 }
@@ -293,7 +294,7 @@ a:hover { text-decoration: underline; }
     display: inline-block;
     margin-top: 0.72rem;
     font-weight: 700;
-    color: #163b66;
+    color: var(--accent-gold);
 }
 
 .highlight-dots {
@@ -308,13 +309,13 @@ a:hover { text-decoration: underline; }
     height: 9px;
     border-radius: 999px;
     border: 0;
-    background: #b9c8db;
+    background: #c3baad;
     cursor: pointer;
     padding: 0;
 }
 
 .highlight-dot.is-active {
-    background: #123a66;
+    background: var(--accent-gold);
 }
 
 .article {
@@ -323,21 +324,21 @@ a:hover { text-decoration: underline; }
     border: 1px solid var(--line);
     border-radius: 20px;
     padding: clamp(1.1rem, 2.4vw, 2.2rem);
-    box-shadow: 0 10px 25px rgba(18, 58, 102, 0.07);
+    box-shadow: 0 10px 25px rgba(24, 36, 56, 0.08);
 }
 
 .article h1,
 .article h2,
 .article h3 {
     font-family: 'Literata', serif;
-    color: #17395f;
+    color: #143154;
     line-height: 1.3;
 }
 
 .article h2 {
     margin-top: 2rem;
     padding-bottom: 0.45rem;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid #ded4c5;
 }
 
 .article ul,
@@ -394,3 +395,4 @@ a:hover { text-decoration: underline; }
         margin-top: 1.25rem;
     }
 }
+    color: #122a47;
