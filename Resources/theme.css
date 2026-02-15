@@ -1,13 +1,14 @@
 :root {
-    --bg: #f4f2ef;
-    --surface: #e9e6e1;
+    --bg: #f7f4fa;
+    --surface: #ece8ef;
     --surface-strong: #ffffff;
-    --ink: #112945;
-    --muted: #4c5b6d;
-    --line: #c9ced6;
-    --accent: #112945;
-    --accent-soft: #e8e4de;
-    --header-bg: #ebe8e2;
+    --ink: #2e2738;
+    --muted: #5f566d;
+    --line: #d4ccd9;
+    --accent: #660099;
+    --accent-soft: #f0e7f8;
+    --header-bg: #efebf3;
+    --accent-pop: #ffcc33;
 }
 
 * { box-sizing: border-box; }
@@ -16,7 +17,7 @@ body {
     margin: 0;
     background-color: #ffffff;
     background-image:
-        linear-gradient(160deg, rgba(255, 255, 255, 0.8) 0%, rgba(252, 249, 245, 0.76) 100%),
+        linear-gradient(160deg, rgba(255, 255, 255, 0.82) 0%, rgba(248, 244, 252, 0.76) 100%),
         url("flower-pattern.svg");
     background-repeat: no-repeat, repeat;
     background-size: cover, 460px 460px;
@@ -33,7 +34,7 @@ a:hover { text-decoration: underline; }
     position: sticky;
     top: 0;
     z-index: 20;
-    background: linear-gradient(180deg, #f6f3ee 0%, var(--header-bg) 100%);
+    background: linear-gradient(180deg, #f7f3fb 0%, var(--header-bg) 100%);
     backdrop-filter: none;
     border-bottom: 1px solid var(--line);
 }
@@ -87,14 +88,14 @@ a:hover { text-decoration: underline; }
     display: inline-block;
     padding: 0.5rem 0.75rem;
     border-radius: 999px;
-    color: #1a3557;
+    color: #493767;
     font-size: 0.9rem;
     font-weight: 600;
 }
 
 .top-nav a:hover {
     background: var(--surface-strong);
-    color: var(--accent);
+    color: #5a1f85;
     text-decoration: none;
 }
 
@@ -111,7 +112,7 @@ a:hover { text-decoration: underline; }
     background: linear-gradient(160deg, #ffffff 0%, #f7f5f2 56%, var(--surface) 100%);
     border: 1px solid var(--line);
     border-radius: 16px;
-    box-shadow: 0 8px 18px rgba(17, 41, 69, 0.09);
+    box-shadow: 0 8px 18px rgba(66, 38, 94, 0.1);
 }
 
 .hero-name {
@@ -119,7 +120,7 @@ a:hover { text-decoration: underline; }
     font-family: 'Source Serif 4', serif;
     font-weight: 700;
     letter-spacing: 0.03em;
-    color: #183960;
+    color: var(--accent);
     font-size: clamp(0.95rem, 1.45vw, 1.2rem);
 }
 
@@ -128,7 +129,7 @@ a:hover { text-decoration: underline; }
     font-family: 'Source Serif 4', serif;
     font-size: clamp(1.05rem, 1.6vw, 1.35rem);
     line-height: 1.18;
-    color: #102945;
+    color: #3f2f58;
 }
 
 .hero-intro {
@@ -160,7 +161,7 @@ a:hover { text-decoration: underline; }
     background: var(--surface-strong);
 }
 
-.btn:hover { text-decoration: none; background: #f2efea; }
+.btn:hover { text-decoration: none; background: #f3edf8; }
 
 .btn-primary {
     background: var(--accent);
@@ -169,7 +170,7 @@ a:hover { text-decoration: underline; }
 }
 
 .btn-primary:hover {
-    background: #0f3156;
+    background: #52007a;
 }
 
 .hero-photo-card {
@@ -196,7 +197,7 @@ a:hover { text-decoration: underline; }
 
 .highlights-banner {
     margin-top: 1rem;
-    background: linear-gradient(160deg, #fffefc 0%, #f5f1eb 100%);
+    background: linear-gradient(160deg, #fffcff 0%, #f4eef9 100%);
     border: 1px solid var(--line);
     border-radius: 18px;
     box-shadow: 0 10px 22px rgba(17, 41, 69, 0.09);
@@ -206,7 +207,7 @@ a:hover { text-decoration: underline; }
 .highlights-header h2 {
     margin: 0;
     font-family: 'Source Serif 4', serif;
-    color: #102c4b;
+    color: #4a2f69;
     font-size: clamp(1.05rem, 1.8vw, 1.45rem);
 }
 
@@ -242,7 +243,7 @@ a:hover { text-decoration: underline; }
     height: 138px;
     border-radius: 12px;
     overflow: hidden;
-    background: #efe9e0;
+    background: #f0eaf6;
 }
 
 .highlight-image {
@@ -269,7 +270,7 @@ a:hover { text-decoration: underline; }
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #27476e;
+    color: #5c2b83;
 }
 
 .highlight-tag {
@@ -277,14 +278,14 @@ a:hover { text-decoration: underline; }
     font-weight: 700;
     padding: 0.22rem 0.48rem;
     border-radius: 999px;
-    background: #19395d;
-    color: #ffffff;
+    background: var(--accent-pop);
+    color: #3a2b08;
 }
 
 .highlight-card h3 {
     margin: 0.55rem 0 0.45rem;
     font-family: 'Source Serif 4', serif;
-    color: #123458;
+    color: #4c316a;
     font-size: 1.05rem;
     line-height: 1.35;
 }
@@ -315,7 +316,7 @@ a:hover { text-decoration: underline; }
     height: 9px;
     border-radius: 999px;
     border: 0;
-    background: #b7b2ac;
+    background: #cbbfd8;
     cursor: pointer;
     padding: 0;
 }
@@ -330,14 +331,14 @@ a:hover { text-decoration: underline; }
     border: 1px solid var(--line);
     border-radius: 20px;
     padding: clamp(1.1rem, 2.4vw, 2.2rem);
-    box-shadow: 0 10px 25px rgba(17, 41, 69, 0.08);
+    box-shadow: 0 10px 25px rgba(66, 38, 94, 0.08);
 }
 
 .article h1,
 .article h2,
 .article h3 {
     font-family: 'Source Serif 4', serif;
-    color: #102d4d;
+    color: #4c316a;
     line-height: 1.3;
 }
 
