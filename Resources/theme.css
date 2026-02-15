@@ -103,13 +103,13 @@ a:hover { text-decoration: underline; }
     box-shadow: 0 14px 35px rgba(12, 34, 53, 0.08);
 }
 
-.hero-kicker {
+.hero-name {
     margin: 0 0 0.5rem;
+    font-family: 'Literata', serif;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: #1d2a3b;
+    font-size: clamp(1.2rem, 2.4vw, 2rem);
 }
 
 .hero h1 {
@@ -162,19 +162,22 @@ a:hover { text-decoration: underline; }
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(145deg, #f9fcff 0%, #edf4f9 100%);
-    border-radius: 20px;
-    border: 1px solid var(--line);
+    background: transparent;
+    border-radius: 0;
+    border: 0;
     min-height: 280px;
+    overflow: hidden;
 }
 
 .hero-photo {
-    width: min(280px, 100%);
+    width: min(330px, 100%);
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    border-radius: 18px;
-    border: 4px solid #ffffff;
-    box-shadow: 0 12px 30px rgba(7, 30, 48, 0.2);
+    border-radius: 0;
+    border: 0;
+    box-shadow: none;
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 72%, transparent 98%);
+    mask-image: radial-gradient(ellipse at center, #000 72%, transparent 98%);
 }
 
 .article {

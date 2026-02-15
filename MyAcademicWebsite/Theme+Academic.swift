@@ -129,7 +129,7 @@ private struct AcademicHTMLFactory: HTMLFactory {
             .class("hero"),
             .div(
                 .class("hero-copy"),
-                .p(.class("hero-kicker"), .text("Personal Website")),
+                .p(.class("hero-name"), .text(siteData.siteName)),
                 .h1(.text(siteData.heroHeadline)),
                 .p(.class("hero-intro"), .text(siteData.heroIntro)),
                 .div(
