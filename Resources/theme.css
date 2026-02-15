@@ -1,25 +1,25 @@
 :root {
-    --bg: #e7edf4;
-    --surface: #dbe3ee;
+    --bg: #f4f2ef;
+    --surface: #e9e6e1;
     --surface-strong: #ffffff;
     --ink: #112945;
-    --muted: #3f5673;
-    --line: #bdcadb;
+    --muted: #4c5b6d;
+    --line: #c9ced6;
     --accent: #112945;
-    --accent-soft: #d3ddea;
-    --header-bg: #dfe7f1;
+    --accent-soft: #e8e4de;
+    --header-bg: #ebe8e2;
 }
 
 * { box-sizing: border-box; }
 
 body {
     margin: 0;
-    background-color: #fcfdff;
+    background-color: #ffffff;
     background-image:
-        linear-gradient(160deg, rgba(255, 255, 255, 0.88) 0%, rgba(246, 250, 255, 0.82) 100%),
+        linear-gradient(160deg, rgba(255, 255, 255, 0.8) 0%, rgba(252, 249, 245, 0.76) 100%),
         url("flower-pattern.svg");
     background-repeat: no-repeat, repeat;
-    background-size: cover, 420px 420px;
+    background-size: cover, 460px 460px;
     background-attachment: fixed, fixed;
     color: var(--ink);
     font-family: 'Source Sans 3', sans-serif;
@@ -33,7 +33,7 @@ a:hover { text-decoration: underline; }
     position: sticky;
     top: 0;
     z-index: 20;
-    background: linear-gradient(180deg, #eef3f9 0%, var(--header-bg) 100%);
+    background: linear-gradient(180deg, #f6f3ee 0%, var(--header-bg) 100%);
     backdrop-filter: none;
     border-bottom: 1px solid var(--line);
 }
@@ -108,7 +108,7 @@ a:hover { text-decoration: underline; }
     grid-template-columns: 1.5fr 0.5fr;
     gap: 0.95rem;
     padding: 0.82rem 1rem;
-    background: linear-gradient(160deg, #ffffff 0%, #f2f6fb 56%, var(--surface) 100%);
+    background: linear-gradient(160deg, #ffffff 0%, #f7f5f2 56%, var(--surface) 100%);
     border: 1px solid var(--line);
     border-radius: 16px;
     box-shadow: 0 8px 18px rgba(17, 41, 69, 0.09);
@@ -160,7 +160,7 @@ a:hover { text-decoration: underline; }
     background: var(--surface-strong);
 }
 
-.btn:hover { text-decoration: none; background: #edf2f8; }
+.btn:hover { text-decoration: none; background: #f2efea; }
 
 .btn-primary {
     background: var(--accent);
@@ -196,7 +196,7 @@ a:hover { text-decoration: underline; }
 
 .highlights-banner {
     margin-top: 1rem;
-    background: linear-gradient(160deg, #f3f7fc 0%, #e8eff7 100%);
+    background: linear-gradient(160deg, #fffefc 0%, #f5f1eb 100%);
     border: 1px solid var(--line);
     border-radius: 18px;
     box-shadow: 0 10px 22px rgba(17, 41, 69, 0.09);
@@ -242,7 +242,7 @@ a:hover { text-decoration: underline; }
     height: 138px;
     border-radius: 12px;
     overflow: hidden;
-    background: #d5deea;
+    background: #efe9e0;
 }
 
 .highlight-image {
@@ -315,7 +315,7 @@ a:hover { text-decoration: underline; }
     height: 9px;
     border-radius: 999px;
     border: 0;
-    background: #96a9bf;
+    background: #b7b2ac;
     cursor: pointer;
     padding: 0;
 }
