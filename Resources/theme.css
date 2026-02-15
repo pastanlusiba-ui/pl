@@ -16,7 +16,7 @@ body {
     margin: 0;
     background: radial-gradient(circle at top right, #f8fbff 0%, var(--bg) 58%, #dfe6f0 100%);
     color: var(--ink);
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
     line-height: 1.7;
 }
 
@@ -110,7 +110,7 @@ a:hover { text-decoration: underline; }
 
 .hero-name {
     margin: 0 0 0.2rem;
-    font-family: 'Literata', serif;
+    font-family: 'Source Serif 4', serif;
     font-weight: 700;
     letter-spacing: 0.03em;
     color: #183960;
@@ -119,7 +119,7 @@ a:hover { text-decoration: underline; }
 
 .hero h1 {
     margin: 0;
-    font-family: 'Literata', serif;
+    font-family: 'Source Serif 4', serif;
     font-size: clamp(1.05rem, 1.6vw, 1.35rem);
     line-height: 1.18;
     color: #102945;
@@ -199,7 +199,7 @@ a:hover { text-decoration: underline; }
 
 .highlights-header h2 {
     margin: 0;
-    font-family: 'Literata', serif;
+    font-family: 'Source Serif 4', serif;
     color: #102c4b;
     font-size: clamp(1.05rem, 1.8vw, 1.45rem);
 }
@@ -277,7 +277,7 @@ a:hover { text-decoration: underline; }
 
 .highlight-card h3 {
     margin: 0.55rem 0 0.45rem;
-    font-family: 'Literata', serif;
+    font-family: 'Source Serif 4', serif;
     color: #123458;
     font-size: 1.05rem;
     line-height: 1.35;
@@ -330,7 +330,7 @@ a:hover { text-decoration: underline; }
 .article h1,
 .article h2,
 .article h3 {
-    font-family: 'Literata', serif;
+    font-family: 'Source Serif 4', serif;
     color: #102d4d;
     line-height: 1.3;
 }
