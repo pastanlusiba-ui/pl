@@ -82,7 +82,9 @@ private struct AcademicHTMLFactory: HTMLFactory {
                                 .src(resolvePath(siteData.logoPath, context: context)),
                                 .alt("Logo")
                             ),
-                            .span(.class("brand-text"), .text(siteData.logoText))
+                            siteData.logoText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                                ? .empty
+                                : .span(.class("brand-text"), .text(siteData.logoText))
                         ),
                         .nav(
                             .class("top-nav"),
