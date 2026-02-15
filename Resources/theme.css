@@ -1,21 +1,20 @@
 :root {
-    --bg: #f2efe9;
-    --surface: #fbf8f3;
+    --bg: #e7edf4;
+    --surface: #dbe3ee;
     --surface-strong: #ffffff;
-    --ink: #142238;
-    --muted: #505b6c;
-    --line: #d6d0c3;
-    --accent: #173a63;
-    --accent-soft: #e7e1d5;
-    --header-bg: #ece6dd;
-    --accent-gold: #8a6a3f;
+    --ink: #112945;
+    --muted: #3f5673;
+    --line: #bdcadb;
+    --accent: #112945;
+    --accent-soft: #d3ddea;
+    --header-bg: #dfe7f1;
 }
 
 * { box-sizing: border-box; }
 
 body {
     margin: 0;
-    background: radial-gradient(circle at top right, #fcfaf6 0%, var(--bg) 56%, #e7e1d6 100%);
+    background: radial-gradient(circle at top right, #f8fbff 0%, var(--bg) 58%, #dfe6f0 100%);
     color: var(--ink);
     font-family: 'Manrope', sans-serif;
     line-height: 1.7;
@@ -28,7 +27,7 @@ a:hover { text-decoration: underline; }
     position: sticky;
     top: 0;
     z-index: 20;
-    background: linear-gradient(180deg, #f3ede4 0%, var(--header-bg) 100%);
+    background: linear-gradient(180deg, #eef3f9 0%, var(--header-bg) 100%);
     backdrop-filter: none;
     border-bottom: 1px solid var(--line);
 }
@@ -82,13 +81,13 @@ a:hover { text-decoration: underline; }
     display: inline-block;
     padding: 0.5rem 0.75rem;
     border-radius: 999px;
-    color: #1d3350;
+    color: #1a3557;
     font-size: 0.9rem;
     font-weight: 600;
 }
 
 .top-nav a:hover {
-    background: #dfe6f0;
+    background: var(--surface-strong);
     color: var(--accent);
     text-decoration: none;
 }
@@ -103,10 +102,10 @@ a:hover { text-decoration: underline; }
     grid-template-columns: 1.5fr 0.5fr;
     gap: 0.95rem;
     padding: 0.82rem 1rem;
-    background: linear-gradient(160deg, #fffefb 0%, var(--surface) 58%, #f5efe5 100%);
+    background: linear-gradient(160deg, #ffffff 0%, #f2f6fb 56%, var(--surface) 100%);
     border: 1px solid var(--line);
     border-radius: 16px;
-    box-shadow: 0 8px 18px rgba(26, 44, 71, 0.1);
+    box-shadow: 0 8px 18px rgba(17, 41, 69, 0.09);
 }
 
 .hero-name {
@@ -114,7 +113,7 @@ a:hover { text-decoration: underline; }
     font-family: 'Literata', serif;
     font-weight: 700;
     letter-spacing: 0.03em;
-    color: var(--accent-gold);
+    color: #183960;
     font-size: clamp(0.95rem, 1.45vw, 1.2rem);
 }
 
@@ -123,11 +122,12 @@ a:hover { text-decoration: underline; }
     font-family: 'Literata', serif;
     font-size: clamp(1.05rem, 1.6vw, 1.35rem);
     line-height: 1.18;
+    color: #102945;
 }
 
 .hero-intro {
     margin-top: 0.38rem;
-    color: #49576d;
+    color: var(--muted);
     font-size: 0.89rem;
     line-height: 1.45;
     max-width: 56ch;
@@ -148,13 +148,13 @@ a:hover { text-decoration: underline; }
     border-radius: 999px;
     border: 1px solid var(--line);
     padding: 0 0.82rem;
-    color: #1e3350;
+    color: var(--accent);
     font-size: 0.85rem;
     font-weight: 700;
-    background: #fdfcf9;
+    background: var(--surface-strong);
 }
 
-.btn:hover { text-decoration: none; background: #f1ece4; }
+.btn:hover { text-decoration: none; background: #edf2f8; }
 
 .btn-primary {
     background: var(--accent);
@@ -190,17 +190,17 @@ a:hover { text-decoration: underline; }
 
 .highlights-banner {
     margin-top: 1rem;
-    background: linear-gradient(160deg, #fffdf8 0%, #f6f2ea 100%);
+    background: linear-gradient(160deg, #f3f7fc 0%, #e8eff7 100%);
     border: 1px solid var(--line);
     border-radius: 18px;
-    box-shadow: 0 10px 22px rgba(24, 36, 56, 0.09);
+    box-shadow: 0 10px 22px rgba(17, 41, 69, 0.09);
     padding: 1rem 1.1rem 0.9rem;
 }
 
 .highlights-header h2 {
     margin: 0;
     font-family: 'Literata', serif;
-    color: #143154;
+    color: #102c4b;
     font-size: clamp(1.05rem, 1.8vw, 1.45rem);
 }
 
@@ -214,7 +214,7 @@ a:hover { text-decoration: underline; }
     overflow: hidden;
     border-radius: 14px;
     border: 1px solid var(--line);
-    background: #fffdfa;
+    background: var(--surface-strong);
 }
 
 .highlights-track {
@@ -236,7 +236,7 @@ a:hover { text-decoration: underline; }
     height: 138px;
     border-radius: 12px;
     overflow: hidden;
-    background: #ebe4d8;
+    background: #d5deea;
 }
 
 .highlight-image {
@@ -263,7 +263,7 @@ a:hover { text-decoration: underline; }
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #2b4b73;
+    color: #27476e;
 }
 
 .highlight-tag {
@@ -271,21 +271,21 @@ a:hover { text-decoration: underline; }
     font-weight: 700;
     padding: 0.22rem 0.48rem;
     border-radius: 999px;
-    background: #efe5d3;
-    color: #6e532f;
+    background: #19395d;
+    color: #ffffff;
 }
 
 .highlight-card h3 {
     margin: 0.55rem 0 0.45rem;
     font-family: 'Literata', serif;
-    color: #16355b;
+    color: #123458;
     font-size: 1.05rem;
     line-height: 1.35;
 }
 
 .highlight-summary {
     margin: 0.1rem 0 0;
-    color: #50607a;
+    color: #46607f;
     font-size: 0.95rem;
     line-height: 1.52;
 }
@@ -294,7 +294,7 @@ a:hover { text-decoration: underline; }
     display: inline-block;
     margin-top: 0.72rem;
     font-weight: 700;
-    color: var(--accent-gold);
+    color: var(--accent);
 }
 
 .highlight-dots {
@@ -309,13 +309,13 @@ a:hover { text-decoration: underline; }
     height: 9px;
     border-radius: 999px;
     border: 0;
-    background: #c3baad;
+    background: #96a9bf;
     cursor: pointer;
     padding: 0;
 }
 
 .highlight-dot.is-active {
-    background: var(--accent-gold);
+    background: var(--accent);
 }
 
 .article {
@@ -324,21 +324,21 @@ a:hover { text-decoration: underline; }
     border: 1px solid var(--line);
     border-radius: 20px;
     padding: clamp(1.1rem, 2.4vw, 2.2rem);
-    box-shadow: 0 10px 25px rgba(24, 36, 56, 0.08);
+    box-shadow: 0 10px 25px rgba(17, 41, 69, 0.08);
 }
 
 .article h1,
 .article h2,
 .article h3 {
     font-family: 'Literata', serif;
-    color: #143154;
+    color: #102d4d;
     line-height: 1.3;
 }
 
 .article h2 {
     margin-top: 2rem;
     padding-bottom: 0.45rem;
-    border-bottom: 1px solid #ded4c5;
+    border-bottom: 1px solid var(--line);
 }
 
 .article ul,
@@ -395,4 +395,3 @@ a:hover { text-decoration: underline; }
         margin-top: 1.25rem;
     }
 }
-    color: #122a47;
