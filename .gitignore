@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# SwiftPM build output
+.build/
+
+# Publish generated/cached output
+Output/
+.publish/
+
+# Xcode user data
+*.xcuserstate
+MyAcademicWebsite.xcodeproj/xcuserdata/

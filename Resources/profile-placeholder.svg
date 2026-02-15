@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300" role="img" aria-labelledby="title desc">
+  <title id="title">Profile placeholder</title>
+  <desc id="desc">Placeholder avatar with initials</desc>
+  <rect width="300" height="300" rx="150" fill="#e9eef4"/>
+  <text x="150" y="172" text-anchor="middle" font-family="Merriweather, serif" font-size="96" fill="#5c6b7a">YN</text>
+</svg>
