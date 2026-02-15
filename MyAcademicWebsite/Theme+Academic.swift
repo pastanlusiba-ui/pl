@@ -10,6 +10,7 @@ extension Theme where Site == AcademicWebsite {
 
 private struct AcademicHTMLFactory: HTMLFactory {
     let siteData: SiteData
+    private let themeVersion = "20260215-flowers-1"
 
     func makeIndexHTML(for index: Index, context: PublishingContext<AcademicWebsite>) -> HTML {
         makePage(
@@ -68,7 +69,7 @@ private struct AcademicHTMLFactory: HTMLFactory {
                 .meta(.charset(.utf8)),
                 .meta(.name("viewport"), .content("width=device-width, initial-scale=1")),
                 .meta(.name("description"), .content(siteData.tagline)),
-                .stylesheet(resolvePath("theme.css", context: context)),
+                .stylesheet(resolvePath("theme.css?v=\(themeVersion)", context: context)),
                 .link(
                     .rel(.stylesheet),
                     .href("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:wght@500;600;700&display=swap")
