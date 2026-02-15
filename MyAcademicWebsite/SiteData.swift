@@ -5,6 +5,14 @@ struct SiteNavItem: Codable {
     var path: String
 }
 
+struct SiteHighlightItem: Codable {
+    var category: String
+    var tag: String
+    var title: String
+    var summary: String
+    var path: String
+}
+
 struct SiteData: Codable {
     var siteName: String
     var tagline: String
@@ -19,6 +27,7 @@ struct SiteData: Codable {
     var linkedin: String
     var location: String
     var navItems: [SiteNavItem]
+    var highlights: [SiteHighlightItem]
 
     static let fallback = SiteData(
         siteName: "Pastan Lusiba",
@@ -41,6 +50,50 @@ struct SiteData: Codable {
             SiteNavItem(title: "Presentations", path: "presentations"),
             SiteNavItem(title: "Blog", path: "blog"),
             SiteNavItem(title: "Connect with me", path: "connect")
+        ],
+        highlights: [
+            SiteHighlightItem(
+                category: "Publications",
+                tag: "Journal Article",
+                title: "Designing practical automation systems for implementation teams",
+                summary: "Draft manuscript focused on lightweight automation models for real operational settings.",
+                path: "publications"
+            ),
+            SiteHighlightItem(
+                category: "Publications",
+                tag: "Policy Brief",
+                title: "Adoption patterns for AI-assisted workflow systems",
+                summary: "Brief in progress on how teams can introduce AI support while preserving process quality.",
+                path: "publications"
+            ),
+            SiteHighlightItem(
+                category: "Blog",
+                tag: "Insight Post",
+                title: "What I learned building an auto-updating personal website",
+                summary: "A walkthrough of content architecture, deployment, and practical maintenance decisions.",
+                path: "blog"
+            ),
+            SiteHighlightItem(
+                category: "Training",
+                tag: "Workshop",
+                title: "Applied workflow automation for small implementation teams",
+                summary: "Hands-on workshop design for building repeatable systems with immediate operational value.",
+                path: "training"
+            ),
+            SiteHighlightItem(
+                category: "Work",
+                tag: "Project Milestone",
+                title: "Launched local editor workflow for dynamic website field updates",
+                summary: "Built a local form-based editor that updates structured data and rebuilds on save.",
+                path: "work"
+            ),
+            SiteHighlightItem(
+                category: "Presentations",
+                tag: "Conference Talk",
+                title: "Practical models for AI-enabled content operations",
+                summary: "Upcoming presentation on implementation choices, risks, and scalable operating patterns.",
+                path: "presentations"
+            )
         ]
     )
 }

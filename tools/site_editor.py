@@ -33,6 +33,29 @@ DEFAULT_DATA = {
         {"title": "Blog", "path": "blog"},
         {"title": "Connect with me", "path": "connect"},
     ],
+    "highlights": [
+        {
+            "category": "Publications",
+            "tag": "Journal Article",
+            "title": "Designing practical automation systems for implementation teams",
+            "summary": "Draft manuscript focused on lightweight automation models for real operational settings.",
+            "path": "publications",
+        },
+        {
+            "category": "Blog",
+            "tag": "Insight Post",
+            "title": "What I learned building an auto-updating personal website",
+            "summary": "A walkthrough of content architecture, deployment, and practical maintenance decisions.",
+            "path": "blog",
+        },
+        {
+            "category": "Training",
+            "tag": "Workshop",
+            "title": "Applied workflow automation for small implementation teams",
+            "summary": "Hands-on workshop design for building repeatable systems with immediate operational value.",
+            "path": "training",
+        },
+    ],
 }
 
 
@@ -47,6 +70,8 @@ def load_data():
     merged.update(data)
     if not isinstance(merged.get("navItems"), list):
         merged["navItems"] = DEFAULT_DATA["navItems"]
+    if not isinstance(merged.get("highlights"), list):
+        merged["highlights"] = DEFAULT_DATA["highlights"]
     return merged
 
 
@@ -84,6 +109,44 @@ def text_to_nav_items(text):
     return items or DEFAULT_DATA["navItems"]
 
 
+def highlight_items_to_text(highlights):
+    lines = []
+    for item in highlights:
+        category = str(item.get("category", "")).strip()
+        tag = str(item.get("tag", "")).strip()
+        title = str(item.get("title", "")).strip()
+        summary = str(item.get("summary", "")).strip()
+        path = str(item.get("path", "")).strip()
+        if category and tag and title and summary and path:
+            lines.append(f"{category}|{tag}|{title}|{summary}|{path}")
+    return "\n".join(lines)
+
+
+def text_to_highlight_items(text):
+    items = []
+    for raw in text.splitlines():
+        line = raw.strip()
+        if not line:
+            continue
+        parts = [part.strip() for part in line.split("|")]
+        if len(parts) != 5:
+            continue
+
+        category, tag, title, summary, path = parts
+        if category and tag and title and summary and path:
+            items.append(
+                {
+                    "category": category,
+                    "tag": tag,
+                    "title": title,
+                    "summary": summary,
+                    "path": path,
+                }
+            )
+
+    return items or DEFAULT_DATA["highlights"]
+
+
 def get_field(fields, key, fallback=""):
     values = fields.get(key)
     if not values:
@@ -96,6 +159,7 @@ def render_form(data, message="", build_output=""):
         return html.escape(str(value), quote=True)
 
     nav_text = nav_items_to_text(data.get("navItems", []))
+    highlights_text = highlight_items_to_text(data.get("highlights", []))
     message_html = f'<div class="notice">{html.escape(message)}</div>' if message else ""
     output_html = (
         f"<pre>{html.escape(build_output)}</pre>" if build_output else ""
@@ -199,6 +263,12 @@ def render_form(data, message="", build_output=""):
       <div class=\"help\">One per line using <code>Title|path</code>. Example: <code>Work|work</code>, <code>Home|/</code>.</div>
     </div>
 
+    <div>
+      <label>Highlights slider items</label>
+      <textarea name=\"highlightsText\">{html.escape(highlights_text)}</textarea>
+      <div class=\"help\">One per line using <code>Category|Tag|Title|Summary|path</code>. Example: <code>Publications|Journal Article|Title|Short summary|publications</code>.</div>
+    </div>
+
     <button type=\"submit\">Save and rebuild website</button>
   </form>
 
@@ -250,6 +320,7 @@ class EditorHandler(BaseHTTPRequestHandler):
             data[key] = get_field(fields, key, str(data.get(key, "")))
 
         data["navItems"] = text_to_nav_items(get_field(fields, "navItemsText", ""))
+        data["highlights"] = text_to_highlight_items(get_field(fields, "highlightsText", ""))
         save_data(data)
 
         result = subprocess.run(

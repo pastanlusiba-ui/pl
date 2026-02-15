@@ -16,6 +16,7 @@ private struct AcademicHTMLFactory: HTMLFactory {
             title: index.title,
             pageBody: .contentBody(index.content.body),
             includeHero: true,
+            includeHighlights: true,
             context: context
         )
     }
@@ -25,6 +26,7 @@ private struct AcademicHTMLFactory: HTMLFactory {
             title: section.title,
             pageBody: .contentBody(section.content.body),
             includeHero: false,
+            includeHighlights: false,
             context: context
         )
     }
@@ -34,6 +36,7 @@ private struct AcademicHTMLFactory: HTMLFactory {
             title: item.title,
             pageBody: .contentBody(item.content.body),
             includeHero: false,
+            includeHighlights: false,
             context: context
         )
     }
@@ -43,6 +46,7 @@ private struct AcademicHTMLFactory: HTMLFactory {
             title: page.title,
             pageBody: .contentBody(page.content.body),
             includeHero: false,
+            includeHighlights: false,
             context: context
         )
     }
@@ -55,6 +59,7 @@ private struct AcademicHTMLFactory: HTMLFactory {
         title: String,
         pageBody: Node<HTML.BodyContext>,
         includeHero: Bool,
+        includeHighlights: Bool,
         context: PublishingContext<AcademicWebsite>
     ) -> HTML {
         HTML(
@@ -104,6 +109,7 @@ private struct AcademicHTMLFactory: HTMLFactory {
                 .main(
                     .class("page-shell"),
                     includeHero ? heroSection(context: context) : .empty,
+                    includeHighlights ? highlightsSection(context: context) : .empty,
                     .article(
                         .class("article"),
                         pageBody
@@ -118,7 +124,8 @@ private struct AcademicHTMLFactory: HTMLFactory {
                         .a(.href(siteData.github), .text("GitHub")),
                         siteData.linkedin.isEmpty ? .empty : .text(" • "),
                         siteData.linkedin.isEmpty ? .empty : .a(.href(siteData.linkedin), .text("LinkedIn"))
-                    )
+                    ),
+                    includeHighlights ? highlightsSliderScriptNode() : .empty
                 )
             )
         )
@@ -147,6 +154,113 @@ private struct AcademicHTMLFactory: HTMLFactory {
                 )
             )
         )
+    }
+
+    private func highlightsSection(context: PublishingContext<AcademicWebsite>) -> Node<HTML.BodyContext> {
+        guard !siteData.highlights.isEmpty else { return .empty }
+
+        return .section(
+            .class("highlights-banner"),
+            .attribute(named: "data-highlights-slider", value: "true"),
+            .div(
+                .class("highlights-header"),
+                .h2("Highlights"),
+                .p("Latest activity across publications, blog, training, work, and presentations.")
+            ),
+            .div(
+                .class("highlights-slider"),
+                .forEach(Array(siteData.highlights.enumerated())) { entry in
+                    let index = entry.offset
+                    let item = entry.element
+
+                    return .article(
+                        .class(index == 0 ? "highlight-card is-active" : "highlight-card"),
+                        .attribute(named: "data-highlight-index", value: String(index)),
+                        .p(
+                            .class("highlight-meta"),
+                            .span(.class("highlight-category"), .text(item.category)),
+                            .span(.class("highlight-tag"), .text(item.tag))
+                        ),
+                        .h3(.text(item.title)),
+                        .p(.class("highlight-summary"), .text(item.summary)),
+                        .a(
+                            .class("highlight-link"),
+                            .href(resolvePath(item.path, context: context)),
+                            .text("Open \(item.category)")
+                        )
+                    )
+                }
+            ),
+            .div(
+                .class("highlight-dots"),
+                .forEach(Array(siteData.highlights.enumerated())) { entry in
+                    let index = entry.offset
+                    return .button(
+                        .class(index == 0 ? "highlight-dot is-active" : "highlight-dot"),
+                        .attribute(named: "type", value: "button"),
+                        .attribute(named: "data-highlight-target", value: String(index)),
+                        .attribute(named: "aria-label", value: "Show highlight \(index + 1)")
+                    )
+                }
+            )
+        )
+    }
+
+    private func highlightsSliderScript() -> String {
+        """
+        (() => {
+          const root = document.querySelector('[data-highlights-slider=\"true\"]');
+          if (!root) return;
+
+          const cards = Array.from(root.querySelectorAll('.highlight-card'));
+          const dots = Array.from(root.querySelectorAll('.highlight-dot'));
+          if (cards.length === 0) return;
+
+          let index = 0;
+          let timer = null;
+
+          const activate = (next) => {
+            index = (next + cards.length) % cards.length;
+
+            cards.forEach((card, i) => {
+              card.classList.toggle('is-active', i === index);
+            });
+
+            dots.forEach((dot, i) => {
+              dot.classList.toggle('is-active', i === index);
+            });
+          };
+
+          const start = () => {
+            if (cards.length < 2 || timer) return;
+            timer = setInterval(() => activate(index + 1), 4200);
+          };
+
+          const stop = () => {
+            if (!timer) return;
+            clearInterval(timer);
+            timer = null;
+          };
+
+          dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+              activate(i);
+              stop();
+              start();
+            });
+          });
+
+          root.addEventListener('mouseenter', stop);
+          root.addEventListener('mouseleave', start);
+
+          activate(0);
+          start();
+        })();
+        """
+    }
+
+    private func highlightsSliderScriptNode() -> Node<HTML.BodyContext> {
+        .script(.raw(highlightsSliderScript()))
     }
 
     private func resolvePath(_ rawPath: String, context: PublishingContext<AcademicWebsite>) -> String {
