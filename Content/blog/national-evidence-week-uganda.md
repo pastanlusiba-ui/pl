@@ -8,6 +8,10 @@ image: highlight-presentation.svg
 
 ## Why National Evidence Week Matters for Local Solutions
 
+![Featured image for this post](/pl/highlight-presentation.svg)
+
+*Featured visual for this article.*
+
 National events can either remain symbolic or become platforms that change practice. In Uganda, National Evidence Week has the potential to do the latter when it connects national dialogue with local implementation.
 
 ACRES announced National Evidence Week under the theme of local solutions for local problems. That framing is important. It acknowledges that evidence is strongest when it is interpreted in context, co-owned by local institutions, and tied to feasible implementation pathways.

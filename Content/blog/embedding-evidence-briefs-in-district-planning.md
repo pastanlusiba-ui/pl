@@ -8,6 +8,10 @@ image: highlight-publication-brief.svg
 
 ## Embedding Evidence Briefs in District Planning Cycles
 
+![Featured image for this post](/pl/highlight-publication-brief.svg)
+
+*Featured visual for this article.*
+
 District planning meetings often include many competing priorities and limited decision time. A well-structured evidence brief can improve these discussions by giving decision makers one concise, comparable input for each policy option.
 
 Across Uganda, institutions advancing evidence use have emphasized practical formatting: short summaries, clear options, implementation constraints, and cost implications. This structure helps planning teams avoid abstract debate and focus on feasible choices.

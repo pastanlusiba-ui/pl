@@ -8,6 +8,10 @@ image: highlight-publication-journal.svg
 
 ## From Evidence to Action in Uganda's Health System
 
+![Featured image for this post](/pl/highlight-publication-journal.svg)
+
+*Featured visual for this article.*
+
 Evidence-informed decision making (EIDM) is often described as a technical process, but in practice it is mostly an institutional process. In Uganda, this means connecting research producers, policy analysts, implementers, and frontline public servants in one decision cycle.
 
 One useful lesson from ACRES is that EIDM works best when it is treated as a service to decision makers, not as a separate academic exercise. ACRES positions itself as a policy and implementation-focused evidence partner, with a strong emphasis on practical public health decisions and system improvement.

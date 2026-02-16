@@ -644,3 +644,18 @@ a:hover { text-decoration: underline; }
         margin-top: 1.25rem;
     }
 }
+
+.article img {
+    display: block;
+    width: min(100%, 760px);
+    margin: 1rem auto 0.5rem;
+    border-radius: 14px;
+    box-shadow: 0 10px 26px rgba(24, 39, 75, 0.12);
+}
+
+.article img + p > em {
+    display: block;
+    text-align: center;
+    color: #6f667f;
+    font-size: 0.9rem;
+}

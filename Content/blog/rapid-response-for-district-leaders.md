@@ -8,6 +8,10 @@ image: highlight-training.svg
 
 ## Rapid Response Evidence for District Decision Makers
 
+![Featured image for this post](/pl/highlight-training.svg)
+
+*Featured visual for this article.*
+
 Many policy and implementation decisions cannot wait for long research cycles. District health teams, technical working groups, and ministry departments often need evidence in days, not months. This is where rapid response evidence support becomes valuable.
 
 ACRES has highlighted this model through rapid response work with the Ministry of Health and selected local governments. Their update describes the delivery of multiple evidence products in one year, showing that high-frequency evidence support is both possible and useful in Ugandan policy environments.

@@ -8,6 +8,10 @@ image: highlight-work.svg
 
 ## Partnership Models for Policy Research Uptake
 
+![Featured image for this post](/pl/highlight-work.svg)
+
+*Featured visual for this article.*
+
 One major challenge in evidence-informed decision making is the disconnect between research production and policy timelines. Research may be rigorous, but if it reaches decision makers too late or in the wrong format, uptake remains low.
 
 Uganda's emerging EIDM ecosystem points to a practical answer: structured partnerships between researchers, technical policy units, and implementation actors. Institutions such as ACRES show how this bridge can be built through continuous engagement rather than one-off dissemination.
