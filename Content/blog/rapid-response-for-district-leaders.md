@@ -1,6 +1,9 @@
 ---
 title: Rapid Response Evidence for District Decision Makers
 description: A dummy post on rapid response evidence products for Ugandan ministries and districts.
+date: 2026-02-12 08:20
+summary: A practical model for short, decision-ready evidence products that support district teams under tight timelines.
+image: highlight-training.svg
 ---
 
 ## Rapid Response Evidence for District Decision Makers

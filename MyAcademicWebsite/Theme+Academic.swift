@@ -10,7 +10,7 @@ extension Theme where Site == AcademicWebsite {
 
 private struct AcademicHTMLFactory: HTMLFactory {
     let siteData: SiteData
-    private let themeVersion = "20260215-flowers-1"
+    private let themeVersion = "20260215-blog-layout-1"
 
     func makeIndexHTML(for index: Index, context: PublishingContext<AcademicWebsite>) -> HTML {
         makePage(
@@ -23,7 +23,19 @@ private struct AcademicHTMLFactory: HTMLFactory {
     }
 
     func makeSectionHTML(for section: Section<AcademicWebsite>, context: PublishingContext<AcademicWebsite>) -> HTML {
-        makePage(
+        if section.id == .blog {
+            return makePage(
+                title: section.title,
+                pageBody: blogSectionBody(section: section, context: context),
+                includeHero: false,
+                includeHighlights: false,
+                includeBlogScripts: true,
+                wrapInArticle: false,
+                context: context
+            )
+        }
+
+        return makePage(
             title: section.title,
             pageBody: .contentBody(section.content.body),
             includeHero: false,
@@ -61,6 +73,8 @@ private struct AcademicHTMLFactory: HTMLFactory {
         pageBody: Node<HTML.BodyContext>,
         includeHero: Bool,
         includeHighlights: Bool,
+        includeBlogScripts: Bool = false,
+        wrapInArticle: Bool = true,
         context: PublishingContext<AcademicWebsite>
     ) -> HTML {
         HTML(
@@ -110,10 +124,12 @@ private struct AcademicHTMLFactory: HTMLFactory {
                 .main(
                     .class("page-shell"),
                     includeHero ? heroSection(context: context) : .empty,
-                    .article(
-                        .class("article"),
-                        pageBody
-                    ),
+                    wrapInArticle
+                        ? .article(
+                            .class("article"),
+                            pageBody
+                        )
+                        : pageBody,
                     includeHighlights ? highlightsSection(context: context) : .empty
                 ),
                 .footer(
@@ -126,7 +142,8 @@ private struct AcademicHTMLFactory: HTMLFactory {
                         siteData.linkedin.isEmpty ? .empty : .text(" • "),
                         siteData.linkedin.isEmpty ? .empty : .a(.href(siteData.linkedin), .text("LinkedIn"))
                     ),
-                    includeHighlights ? highlightsSliderScriptNode() : .empty
+                    includeHighlights ? highlightsSliderScriptNode() : .empty,
+                    includeBlogScripts ? blogSectionScriptNode() : .empty
                 )
             )
         )
@@ -153,6 +170,136 @@ private struct AcademicHTMLFactory: HTMLFactory {
                     .src(resolvePath(siteData.profileImagePath, context: context)),
                     .alt("Profile picture")
                 )
+            )
+        )
+    }
+
+    private func blogSectionBody(
+        section: Section<AcademicWebsite>,
+        context: PublishingContext<AcademicWebsite>
+    ) -> Node<HTML.BodyContext> {
+        let posts = section.items.sorted { $0.date > $1.date }
+
+        guard !posts.isEmpty else {
+            return .section(
+                .class("blog-layout"),
+                .div(
+                    .class("blog-main"),
+                    .div(
+                        .class("blog-page-header"),
+                        .h2("Latest Blog Posts"),
+                        .p("Posts will appear here as they are published.")
+                    )
+                )
+            )
+        }
+
+        return .section(
+            .class("blog-layout"),
+            .attribute(named: "data-blog-layout", value: "true"),
+            .div(
+                .class("blog-main"),
+                .div(
+                    .class("blog-page-header"),
+                    .h2("Latest Blog Posts"),
+                    .p("Evidence-informed decision making notes, reflections, and practical learning for Uganda.")
+                ),
+                .div(
+                    .class("blog-list"),
+                    .forEach(posts) { post in
+                        blogPreviewCard(for: post, context: context)
+                    }
+                ),
+                .div(
+                    .class("blog-pagination"),
+                    .attribute(named: "data-blog-pagination", value: "true"),
+                    .button(
+                        .class("blog-page-btn"),
+                        .attribute(named: "type", value: "button"),
+                        .attribute(named: "data-blog-page-prev", value: "true"),
+                        .text("Newer")
+                    ),
+                    .span(
+                        .class("blog-page-state"),
+                        .attribute(named: "data-blog-page-state", value: "true"),
+                        .text("Page 1 of 1")
+                    ),
+                    .button(
+                        .class("blog-page-btn"),
+                        .attribute(named: "type", value: "button"),
+                        .attribute(named: "data-blog-page-next", value: "true"),
+                        .text("Older")
+                    )
+                )
+            ),
+            .div(
+                .class("blog-sidebar"),
+                .h3(.class("blog-sidebar-title"), .text("Auto Shuffling Posts")),
+                .div(
+                    .class("blog-spotlight"),
+                    .attribute(named: "data-blog-spotlight", value: "true"),
+                    .forEach(Array(posts.enumerated())) { entry in
+                        blogSpotlightCard(for: entry.element, isActive: entry.offset == 0, context: context)
+                    }
+                )
+            )
+        )
+    }
+
+    private func blogPreviewCard(
+        for item: Item<AcademicWebsite>,
+        context: PublishingContext<AcademicWebsite>
+    ) -> Node<HTML.BodyContext> {
+        let targetPath = resolvePath(item.path.string, context: context)
+
+        return .article(
+            .class("blog-preview-card"),
+            .attribute(named: "data-blog-post-card", value: "true"),
+            .a(
+                .class("blog-preview-media"),
+                .href(targetPath),
+                .img(
+                    .class("blog-preview-image"),
+                    .src(resolvePath(blogPostImagePath(for: item), context: context)),
+                    .alt("\(item.title) preview image")
+                )
+            ),
+            .div(
+                .class("blog-preview-content"),
+                .p(.class("blog-preview-date"), .text(formattedDate(item.date))),
+                .h3(
+                    .class("blog-preview-title"),
+                    .a(.href(targetPath), .text(item.title))
+                ),
+                .p(.class("blog-preview-summary"), .text(blogPostSummary(for: item))),
+                .a(.class("blog-preview-link"), .href(targetPath), .text("Read post"))
+            )
+        )
+    }
+
+    private func blogSpotlightCard(
+        for item: Item<AcademicWebsite>,
+        isActive: Bool,
+        context: PublishingContext<AcademicWebsite>
+    ) -> Node<HTML.BodyContext> {
+        let targetPath = resolvePath(item.path.string, context: context)
+
+        return .article(
+            .class(isActive ? "blog-spotlight-card is-active" : "blog-spotlight-card"),
+            .a(
+                .class("blog-spotlight-media"),
+                .href(targetPath),
+                .img(
+                    .class("blog-spotlight-image"),
+                    .src(resolvePath(blogPostImagePath(for: item), context: context)),
+                    .alt("\(item.title) featured image")
+                )
+            ),
+            .div(
+                .class("blog-spotlight-content"),
+                .h4(.class("blog-spotlight-title"), .a(.href(targetPath), .text(item.title))),
+                .p(.class("blog-spotlight-summary"), .text(blogPostSummary(for: item))),
+                .a(.class("blog-spotlight-link"), .href(targetPath), .text("Open"))
             )
         )
     }
@@ -278,9 +425,111 @@ private struct AcademicHTMLFactory: HTMLFactory {
         .script(.raw(highlightsSliderScript()))
     }
 
+    private func blogSectionScript() -> String {
+        """
+        (() => {
+          const root = document.querySelector('[data-blog-layout=\"true\"]');
+          if (!root) return;
+
+          const posts = Array.from(root.querySelectorAll('[data-blog-post-card]'));
+          const pagination = root.querySelector('[data-blog-pagination=\"true\"]');
+          const prev = root.querySelector('[data-blog-page-prev=\"true\"]');
+          const next = root.querySelector('[data-blog-page-next=\"true\"]');
+          const state = root.querySelector('[data-blog-page-state=\"true\"]');
+          const pageSize = 5;
+
+          let page = 0;
+          const pageCount = Math.max(1, Math.ceil(posts.length / pageSize));
+
+          const renderPage = () => {
+            posts.forEach((post, index) => {
+              const visible = index >= page * pageSize && index < (page + 1) * pageSize;
+              post.classList.toggle('is-hidden', !visible);
+            });
+
+            if (state) state.textContent = `Page ${page + 1} of ${pageCount}`;
+            if (prev) prev.disabled = page === 0;
+            if (next) next.disabled = page >= pageCount - 1;
+
+            if (pagination) {
+              pagination.classList.toggle('is-hidden', pageCount <= 1);
+            }
+          };
+
+          prev?.addEventListener('click', () => {
+            if (page <= 0) return;
+            page -= 1;
+            renderPage();
+          });
+
+          next?.addEventListener('click', () => {
+            if (page >= pageCount - 1) return;
+            page += 1;
+            renderPage();
+          });
+
+          renderPage();
+
+          const spotlight = root.querySelector('[data-blog-spotlight=\"true\"]');
+          if (!spotlight) return;
+
+          const cards = Array.from(spotlight.querySelectorAll('.blog-spotlight-card'));
+          if (cards.length === 0) return;
+
+          let active = 0;
+          let timer = null;
+
+          const activate = (nextIndex) => {
+            active = (nextIndex + cards.length) % cards.length;
+            cards.forEach((card, index) => {
+              card.classList.toggle('is-active', index === active);
+            });
+          };
+
+          const start = () => {
+            if (cards.length < 2 || timer) return;
+            timer = setInterval(() => activate(active + 1), 4300);
+          };
+
+          const stop = () => {
+            if (!timer) return;
+            clearInterval(timer);
+            timer = null;
+          };
+
+          spotlight.addEventListener('mouseenter', stop);
+          spotlight.addEventListener('mouseleave', start);
+
+          activate(0);
+          start();
+        })();
+        """
+    }
+
+    private func blogSectionScriptNode() -> Node<HTML.BodyContext> {
+        .script(.raw(blogSectionScript()))
+    }
+
     private func highlightImagePath(for item: SiteHighlightItem) -> String {
         let candidate = item.imagePath?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         return candidate.isEmpty ? siteData.profileImagePath : candidate
+    }
+
+    private func blogPostImagePath(for item: Item<AcademicWebsite>) -> String {
+        let candidate = item.metadata.image?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        return candidate.isEmpty ? "highlight-blog.svg" : candidate
+    }
+
+    private func blogPostSummary(for item: Item<AcademicWebsite>) -> String {
+        let candidate = item.metadata.summary?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        return candidate.isEmpty ? "Read this post for key insights and practical reflections." : candidate
+    }
+
+    private func formattedDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "d MMMM yyyy"
+        return formatter.string(from: date)
     }
 
     private func resolvePath(_ rawPath: String, context: PublishingContext<AcademicWebsite>) -> String {

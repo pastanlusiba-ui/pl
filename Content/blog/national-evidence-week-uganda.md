@@ -1,6 +1,9 @@
 ---
 title: Why National Evidence Week Matters for Local Solutions
 description: A dummy post on Uganda's evidence culture and the role of National Evidence Week.
+date: 2026-02-10 14:00
+summary: Why evidence events matter most when they convert national dialogue into local, implementable action.
+image: highlight-presentation.svg
 ---
 
 ## Why National Evidence Week Matters for Local Solutions

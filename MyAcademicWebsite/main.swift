@@ -6,6 +6,7 @@ let siteData = SiteDataLoader.load()
 
 struct AcademicWebsite: Website {
     enum SectionID: String, WebsiteSectionID {
+        case blog
         case work
         case training
         case publications
@@ -13,7 +14,10 @@ struct AcademicWebsite: Website {
         case connect
     }
 
-    struct ItemMetadata: WebsiteItemMetadata {}
+    struct ItemMetadata: WebsiteItemMetadata {
+        var image: String?
+        var summary: String?
+    }
 
     private let data: SiteData
 

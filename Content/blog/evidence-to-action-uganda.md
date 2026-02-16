@@ -1,6 +1,9 @@
 ---
 title: From Evidence to Action in Uganda's Health System
 description: A dummy post on building evidence-informed decision making systems in Uganda.
+date: 2026-02-15 09:30
+summary: How institutions can move from available evidence to decision-ready action in policy and implementation workflows.
+image: highlight-publication-journal.svg
 ---
 
 ## From Evidence to Action in Uganda's Health System
