@@ -5,21 +5,31 @@ description: Background, positions, and skills profile
 
 ## Profile
 
-Builder and operator focused on practical software systems and AI-enabled workflow execution.
+Senior Research Scientist and knowledge broker with a background in basic sciences, epidemiology, and biostatistics, focused on Evidence-Informed Policymaking (EIPM).
 
 ## Core Capability Areas
 
-- Workflow automation architecture
-- Static and dynamic web publishing
-- Technical operations and deployment design
-- Productized internal tooling
+- Quantitative and qualitative research
+- Evidence synthesis and evidence packaging for knowledge translation
+- Scientific writing, analytical thinking, and problem solving
+- Capacity building and stakeholder engagement for evidence use
 
-## Experience Snapshot
+## Education
 
-- Built and deployed production-ready personal web systems
-- Structured reusable content operations workflows
-- Applied automation in publishing and project coordination contexts
+- **Master of Science in Clinical Epidemiology and Biostatistics**  
+  Makerere University, Kampala, Uganda (Aug 2015 - Jan 2018)
 
-## Available Upon Request
+- **Bachelor of Biomedical Laboratory Technology**  
+  Makerere University, Kampala, Uganda (Aug 2009 - Jan 2013)
 
-Detailed CV with timeline, responsibilities, and project references.
+## Software and Tools
+
+- Microsoft Office Suite
+- Evidence synthesis platforms: EPPI, Covidence, Rayyan, Publish or Perish, EndNote, Zotero
+- Analysis software: STATA, SPSS, R
+- Databases: Medline, Scopus, EBSCO, Web of Science, Google Scholar
+- Collaboration and management tools: Microsoft Teams, Slack
+
+## Full CV
+
+Detailed role timeline, responsibilities, and project support records are integrated across the Work, Training, Publications, and Presentations pages.

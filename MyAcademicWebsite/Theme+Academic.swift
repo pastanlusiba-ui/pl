@@ -10,7 +10,7 @@ extension Theme where Site == AcademicWebsite {
 
 private struct AcademicHTMLFactory: HTMLFactory {
     let siteData: SiteData
-    private let themeVersion = "20260215-blog-layout-1"
+    private let themeVersion = "20260216-highlights-from-pages-1"
 
     func makeIndexHTML(for index: Index, context: PublishingContext<AcademicWebsite>) -> HTML {
         makePage(
@@ -305,7 +305,8 @@ private struct AcademicHTMLFactory: HTMLFactory {
     }
 
     private func highlightsSection(context: PublishingContext<AcademicWebsite>) -> Node<HTML.BodyContext> {
-        guard !siteData.highlights.isEmpty else { return .empty }
+        let highlights = derivedHighlights(context: context)
+        guard !highlights.isEmpty else { return .empty }
 
         return .section(
             .class("highlights-banner"),
@@ -313,13 +314,13 @@ private struct AcademicHTMLFactory: HTMLFactory {
             .div(
                 .class("highlights-header"),
                 .h2("Highlights"),
-                .p("Latest activity across publications, blog, training, work, and presentations.")
+                .p("Latest updates pulled from your pages and newest posts.")
             ),
             .div(
                 .class("highlights-slider"),
                 .div(
                     .class("highlights-track"),
-                    .forEach(siteData.highlights) { item in
+                    .forEach(highlights) { item in
                         .article(
                             .class("highlight-card"),
                             .div(
@@ -351,7 +352,7 @@ private struct AcademicHTMLFactory: HTMLFactory {
             ),
             .div(
                 .class("highlight-dots"),
-                .forEach(Array(siteData.highlights.enumerated())) { entry in
+                .forEach(Array(highlights.enumerated())) { entry in
                     let index = entry.offset
                     return .button(
                         .class(index == 0 ? "highlight-dot is-active" : "highlight-dot"),
@@ -362,6 +363,102 @@ private struct AcademicHTMLFactory: HTMLFactory {
                 }
             )
         )
+    }
+
+    private func derivedHighlights(context: PublishingContext<AcademicWebsite>) -> [SiteHighlightItem] {
+        let orderedIDs: [AcademicWebsite.SectionID] = [.publications, .blog, .training, .work, .presentations]
+        let sectionsByID = Dictionary(uniqueKeysWithValues: context.sections.map { ($0.id, $0) })
+
+        return orderedIDs.compactMap { id in
+            guard let section = sectionsByID[id] else { return nil }
+            let latestItem = section.items.sorted { $0.date > $1.date }.first
+
+            let imagePath: String = {
+                if let latestItem {
+                    let candidate = latestItem.metadata.image?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+                    if !candidate.isEmpty { return candidate }
+                }
+                return highlightImagePath(for: id)
+            }()
+
+            let title = latestItem?.title ?? "\(section.title) Update"
+            let summary = latestItem.map { blogPostSummary(for: $0) }
+                ?? normalizedHighlightSummary(
+                    section.content.description,
+                    fallback: fallbackHighlightSummary(for: id)
+                )
+
+            return SiteHighlightItem(
+                category: section.title,
+                tag: highlightTag(for: id, hasItem: latestItem != nil),
+                title: title,
+                summary: summary,
+                path: latestItem?.path.string ?? section.path.string,
+                imagePath: imagePath
+            )
+        }
+    }
+
+    private func highlightTag(for sectionID: AcademicWebsite.SectionID, hasItem: Bool) -> String {
+        switch sectionID {
+        case .publications:
+            return hasItem ? "Latest Output" : "Research Output"
+        case .blog:
+            return hasItem ? "Latest Post" : "Blog Update"
+        case .training:
+            return hasItem ? "Latest Session" : "Capacity Building"
+        case .work:
+            return hasItem ? "Latest Role" : "Current Role"
+        case .presentations:
+            return hasItem ? "Latest Talk" : "Recent Session"
+        case .connect:
+            return "Contact"
+        }
+    }
+
+    private func highlightImagePath(for sectionID: AcademicWebsite.SectionID) -> String {
+        switch sectionID {
+        case .publications:
+            return "highlight-publication-journal.svg"
+        case .blog:
+            return "highlight-blog.svg"
+        case .training:
+            return "highlight-training.svg"
+        case .work:
+            return "highlight-work.svg"
+        case .presentations:
+            return "highlight-presentation.svg"
+        case .connect:
+            return siteData.profileImagePath
+        }
+    }
+
+    private func fallbackHighlightSummary(for sectionID: AcademicWebsite.SectionID) -> String {
+        switch sectionID {
+        case .publications:
+            return "Recent evidence synthesis and research outputs."
+        case .blog:
+            return "Recent blog reflections and field notes."
+        case .training:
+            return "Latest capacity-building and workshop activity."
+        case .work:
+            return "Current professional role and responsibilities."
+        case .presentations:
+            return "Recent talks, sessions, and knowledge-sharing activities."
+        case .connect:
+            return "Ways to get in touch."
+        }
+    }
+
+    private func normalizedHighlightSummary(_ value: String, fallback: String) -> String {
+        let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+        if trimmed.isEmpty { return fallback }
+
+        let maxLength = 170
+        if trimmed.count <= maxLength { return trimmed }
+        let prefix = trimmed.prefix(maxLength)
+        let withoutTrailingWhitespace = prefix.reversed().drop(while: { $0.isWhitespace }).reversed()
+        return "\(withoutTrailingWhitespace)…"
     }
 
     private func highlightsSliderScript() -> String {

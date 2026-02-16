@@ -5,15 +5,18 @@ description: Main landing page
 
 ## About Me
 
-I am **Pastan Lusiba**, a builder focused on practical AI workflows, automation systems, and web delivery.
+I am **Pastan Lusiba**, a **Senior Research Scientist** and knowledge broker in the evidence-use space.
 
-I work on turning ideas into clear, maintainable systems that teams can actually use in real-world operations.
+My background combines basic sciences, epidemiology, and biostatistics, with a strong focus on **Evidence-Informed Policymaking (EIPM)**.
+
+I work to ensure policy and program decisions are informed by the best available evidence in a timely and practical way.
 
 ## What I Do
 
-- Design and implement automation workflows
-- Build and maintain content-first websites
-- Support AI-assisted operations and execution systems
+- Lead rapid response evidence services for policymakers at national and sub-national levels
+- Support evidence synthesis, including scoping reviews, rapid reviews, and systematic reviews
+- Build capacity for teams and institutions in evidence-informed decision-making
+- Translate complex research findings into decision-ready evidence products
 
 ## Explore
 

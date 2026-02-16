@@ -5,8 +5,10 @@ description: Contact information and social links
 
 ## Contact
 
-- **Email:** pastanlusiba@gmail.com
-- **Location:** Uganda
+- **Email (Primary):** plusiba@acres.or.ug
+- **Email (Personal):** pastanlusiba@gmail.com
+- **Phone:** +256-783-403215
+- **Location:** Kampala, Uganda
 
 ## Social Links
 
@@ -15,4 +17,4 @@ description: Contact information and social links
 
 ## Collaboration
 
-I am open to collaboration in automation, AI-enabled operations, and web delivery systems.
+I am open to collaboration on evidence synthesis, evidence-informed policymaking, rapid response services, and capacity-building initiatives.

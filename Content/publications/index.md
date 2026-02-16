@@ -1,23 +1,30 @@
 ---
 title: Publications
-description: Papers, articles, and briefs
+description: Evidence synthesis outputs, review contributions, and publication development activity.
 ---
 
-## Papers
+## Current and Recent Outputs
 
-1. *Paper title* — Journal/Conference, Year
-2. *Paper title* — Journal/Conference, Year
+### Evidence Synthesis and Review Work
 
-## Articles
+- **Scoping Review:** Digital tools that can automate stages of the Systematic Literature Review process  
+  *(Digital Gender-Inclusive Tools for Evidence Use project)*
 
-1. *Article title* — Publication platform, Year
-2. *Article title* — Publication platform, Year
+- **Systematic Review:** Identifying research gaps and setting research priorities in Evidence-Informed Policymaking
 
-## Briefs
+### Evidence Gap Map and Effect Size Contributions
 
-1. *Policy/technical brief title* — Organization, Year
-2. *Policy/technical brief title* — Organization, Year
+- **Conflict and Atrocities Prevention Evidence Gap Map**  
+  Effect-size coding and database development support (IIPHG)
 
-## Notes
+- **Youth Endowment Fund Evidence and Gap Map**  
+  Effect-size coding and extraction support (Campbell Collaboration)
 
-This page is maintained as a living list and will be updated as new outputs are published.
+### Rapid Response and Policy-Facing Evidence Products
+
+- Development of decision-ready evidence products for national and sub-national policymakers through ACRES rapid response services
+- Ongoing coordination of multi-institution publication development
+
+## Note
+
+This page is a living list. Named journal articles, briefs, and links will be expanded as publication records are finalized.

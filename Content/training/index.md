@@ -1,20 +1,26 @@
 ---
 title: Training
-description: Workshops, courses, and teaching
+description: Capacity-building support in evidence-informed decision and policy-making.
 ---
 
-## Workshops
+## Capacity Building Focus
 
-- AI-assisted workflow design
-- Content automation operations
-- Practical delivery systems for small teams
+I support teams and institutions to strengthen practical skills for using research evidence in policy and implementation.
 
-## Courses
+## Topics I Facilitate
 
-- Applied web publishing workflows
-- Technical operations for non-engineering teams
-- Structured documentation and implementation planning
+- Rapid Response Service design and implementation
+- Evidence-informed decision-making and policymaking (EIDM/EIPM)
+- Evidence synthesis workflows (scoping reviews, rapid reviews, and systematic reviews)
+- Policy brief development and evidence packaging for knowledge translation
+- Screening, data extraction, and quality appraisal for evidence products
 
-## Teaching and Facilitation
+## Recent Capacity-Building Activity
 
-I support teams through practical, implementation-focused training sessions with actionable outputs.
+- Mentored ACRES team members through internal workshops and structured hands-on support
+- Sensitized policymakers and systems managers on evidence-use and rapid response services
+- Trained health workers on implementation responsibilities in the cryptococcal antigen screening program
+
+## Approach
+
+My training style is practical and output-oriented: participants leave with clear tools, templates, and workflows they can use immediately.
