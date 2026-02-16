@@ -110,9 +110,9 @@ a:hover { text-decoration: underline; }
     gap: 0.95rem;
     padding: 0.82rem 1rem;
     background: linear-gradient(160deg, #ffffff 0%, #f7f5f2 56%, var(--surface) 100%);
-    border: 1px solid var(--line);
+    border: 0;
     border-radius: 16px;
-    box-shadow: 0 8px 18px rgba(66, 38, 94, 0.1);
+    box-shadow: none;
 }
 
 .hero-name {
@@ -198,9 +198,9 @@ a:hover { text-decoration: underline; }
 .highlights-banner {
     margin-top: 1rem;
     background: linear-gradient(160deg, #fffcff 0%, #f4eef9 100%);
-    border: 1px solid var(--line);
+    border: 0;
     border-radius: 18px;
-    box-shadow: 0 10px 22px rgba(17, 41, 69, 0.09);
+    box-shadow: none;
     padding: 1rem 1.1rem 0.9rem;
 }
 
@@ -220,8 +220,8 @@ a:hover { text-decoration: underline; }
 .highlights-slider {
     overflow: hidden;
     border-radius: 14px;
-    border: 1px solid var(--line);
-    background: var(--surface-strong);
+    border: 0;
+    background: rgba(255, 255, 255, 0.72);
 }
 
 .highlights-track {
@@ -328,10 +328,10 @@ a:hover { text-decoration: underline; }
 .article {
     margin-top: 1.75rem;
     background: var(--surface-strong);
-    border: 1px solid var(--line);
+    border: 0;
     border-radius: 20px;
     padding: clamp(1.1rem, 2.4vw, 2.2rem);
-    box-shadow: 0 10px 25px rgba(66, 38, 94, 0.08);
+    box-shadow: none;
 }
 
 .article h1,
@@ -345,7 +345,7 @@ a:hover { text-decoration: underline; }
 .article h2 {
     margin-top: 2rem;
     padding-bottom: 0.45rem;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 0;
 }
 
 .article ul,
